@@ -2,22 +2,23 @@ package world;
 
 import misc.Interactable;
 import graphics.PixelSprite;
+import graphics.SpriteInfo;
 
 public class NPC extends PixelSprite implements Interactable{
 
 	String nearComment;
 	String farComment;
-	String spriteset;
+	SpriteInfo spriteinfo;
 	int currentFrame;
 	int x;
 	int y;
 	
-	public NPC(int x, int y, String nearComment, String farComment, String spriteset){
+	public NPC(int x, int y, String nearComment, String farComment, SpriteInfo spriteinfo){
 		this.x = x;
 		this.y = y;
 		this.nearComment = nearComment;
 		this.farComment = farComment;
-		this.spriteset = spriteset;
+		this.spriteinfo = spriteinfo;
 	}
 
 	@Override

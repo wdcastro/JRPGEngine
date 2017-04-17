@@ -1,4 +1,0 @@
-sprite class
-sprites animate themselves
-character sprite moves itself
-sprites have their own cooldowns and updates
