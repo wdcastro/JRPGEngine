@@ -4,6 +4,9 @@
   <image source="test city.png" width="1024" height="1024"/>
  </tileset>
  <layer name="Tile Layer 1" width="80" height="80">
+  <properties>
+   <property name="layer_type" value="TERRAIN"/>
+  </properties>
   <data>
    <tile gid="54"/>
    <tile gid="54"/>
@@ -6408,6 +6411,9 @@
   </data>
  </layer>
  <layer name="Tile Layer 2" width="80" height="80">
+  <properties>
+   <property name="layer_type" value="INTERACTABLE"/>
+  </properties>
   <data>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -6897,7 +6903,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="243"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>

@@ -1,14 +1,16 @@
 package world;
 
-import java.util.ArrayList;
-
-import parser.Element;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import gamecomponents.Game;
 import graphics.Drawable;
 
-public class TileLayer extends Drawable{
+import java.util.ArrayList;
+
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import parser.Element;
+
+public class InteractableLayer extends Drawable{
+	
 	
 	Element layerElement;
 	int[] tilemap;
@@ -20,7 +22,7 @@ public class TileLayer extends Drawable{
 	World parentWorld;
 	String layerType;
 	
-	public TileLayer(Element element, ArrayList<TileSet> tilesets, ArrayList<Image> tilesetImages, World w){
+	public InteractableLayer(Element element, ArrayList<TileSet> tilesets, ArrayList<Image> tilesetImages, World w){
 		parentWorld = w;
 		this.tilesets = tilesets;
 		this.tilesetImages = tilesetImages;
@@ -39,7 +41,7 @@ public class TileLayer extends Drawable{
 		
 	}
 	
-	public void processElement(){
+	public void processElement(){ //TODO: add interactable array list
 		double startTime = System.nanoTime();
 		Element currentElement = null;
 

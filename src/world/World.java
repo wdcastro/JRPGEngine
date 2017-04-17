@@ -27,7 +27,7 @@ public class World extends Screen{
 			Element currentElement = mapElements.get(i);
 			switch(currentElement.getName()){
 			case "tileset":
-				System.out.println("Processing tileset");
+				//System.out.println("Processing tileset");
 				TileSet tileset = new TileSet(Integer.parseInt(currentElement.getAttributes().get("firstgid")),
 						currentElement.getAttributes().get("name"),
 						Integer.parseInt(currentElement.getAttributes().get("tilewidth")),
@@ -41,14 +41,33 @@ public class World extends Screen{
 				tilesetImages.add(new Image(new File("res/mapdata/"+tileset.imagename).toURI().toString()));
 				break;
 			case "layer":
-				System.out.println("Processing layer");
-				if(tilesets == null){
-					System.err.println("No tilesets found when rendering map.");
-					break;
+				String layerType = "TERRAIN";
+				for(int j = 0; j < currentElement.getChildren().size(); j++){
+					if(currentElement.getChildren().get(j).getName().equals("properties")){
+						//System.out.println("Found properties tag");
+						layerType = currentElement.getChildren().get(j).getChildren().get(0).getAttributes().get("value");
+					}
 				}
-				TileLayer layer = new TileLayer(mapElements.get(i), tilesets, tilesetImages, this);
-				layer.processElement();
-				drawables.add(layer);
+				if(layerType.equals("INTERACTABLE")){
+					ArrayList<Element> properties = currentElement.getChildren();
+					//for(int i = 0; i < properties.size(); i++){
+					//	for later when you have multiple properties on one layer
+					//}
+					//layerType = properties.get(0).getAttributes().get("value");
+					System.out.println("Interactable layer found");
+
+					InteractableLayer layer = new InteractableLayer(mapElements.get(i), tilesets, tilesetImages, this);
+					layer.processElement();
+					drawables.add(layer);
+				} else {
+					if(tilesets == null){
+						System.err.println("No tilesets found when rendering map.");
+						break;
+					}
+					TileLayer layer = new TileLayer(mapElements.get(i), tilesets, tilesetImages, this);
+					layer.processElement();
+					drawables.add(layer);
+				}
 				break;
 			default: 
 				System.out.println("Unknown tag in map: " +  mapElements.get(i).getName());
