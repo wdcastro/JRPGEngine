@@ -22,5 +22,9 @@ public class ImageResourceManager {
 		filenames.put("MAIN_MENU_BG", new SpriteInfo("res/background/background.png", 0, 0, 1280, 720));
 	}
 	
+	public static Image getImageFromFile(String path){
+		return new Image(new File(path).toURI().toString());
+	}
+	
 	//TODO: function for loading strings into hash table from external file
 }

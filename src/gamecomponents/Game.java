@@ -91,6 +91,10 @@ public class Game extends Application{
 		stage.setScene(scene);
 		stage.show();
 
+		System.out.println("--------------------------------------------------");
+		System.out.println("Starting game");
+		System.out.println("--------------------------------------------------");
+
 		@SuppressWarnings("unused")
 		GameStage gamestage = new GameStage(canvas);
 		

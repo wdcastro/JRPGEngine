@@ -2,7 +2,10 @@ package gamecomponents;
 
 
 
+import resources.ImageResourceManager;
+import ui.MenuScreen;
 import world.World;
+import graphics.CGImage;
 import graphics.DrawingThread;
 import graphics.Screen;
 import javafx.animation.AnimationTimer;
@@ -22,6 +25,7 @@ public class GameStage {
 		
 
 		drawingthread = new DrawingThread(canvas.getGraphicsContext2D(), this);
+		MenuScreen menuscreen = new MenuScreen();
 		World w = new World();
 		AnimationTimer updateLoop = new AnimationTimer(){
 
@@ -42,10 +46,10 @@ public class GameStage {
 	
 	public void setGameStage(Screen s){
 		//TODO: render css
-		System.out.print("Game stage set to");
-		System.out.println(s.getClass().toString());
-		
+		System.out.println("Game stage set to "+ s.getClass().toString());
 		drawingthread.updateDrawables(s.getDrawables()); // sprites are drawables
+		System.out.println("Starting drawing...");
+		System.out.println("--------------------------------");
 	}
 	
 	
