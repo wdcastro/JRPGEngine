@@ -48,11 +48,15 @@ public class TiledTileLayer{
 	public void loadData(Element element, ArrayList<TiledTileSet> tilesets) {
 		ArrayList<Element> children = element.getChildren();	
 	
+
+		System.out.println(tilesets.get(0).tiles.keySet());
 		for(int i = 0; i < children.size(); i++){
 			int gid = Integer.parseInt(children.get(i).getAttributes().get("gid"));
+
 			for(int k = 0; k<tilesets.size();k++){
 				if(tilesets.get(k).tiles.keySet().contains(gid)){
-					System.out.println("added special tile "+gid);
+
+					System.out.println("added tile "+gid);
 					data.add(tilesets.get(k).tiles.get(gid));
 				} else {					
 					data.add(new Tile(gid, "data", 0));	
