@@ -20,6 +20,7 @@ public class ImageResourceManager {
 	
 	public static void loadResourcesFromFile(){
 		filenames.put("MAIN_MENU_BG", new SpriteInfo("res/background/background.png", 0, 0, 1280, 720));
+		filenames.put("CHIBI_DRAGOON", new SpriteInfo("res/misc/dragoon chibi.png", 0, 0, 64, 64));
 	}
 	
 	public static Image getImageFromFile(String path){

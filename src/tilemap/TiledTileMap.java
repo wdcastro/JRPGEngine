@@ -184,7 +184,23 @@ public class TiledTileMap extends Drawable{
 		}
 	}
 
-
+	public ArrayList<Tile> getTilesAt(int index){
+		ArrayList<Tile> tiles = new ArrayList<Tile>();
+		for (int i = 0; i<tilelayers.size(); i++){
+			tiles.add(tilelayers.get(i).data.get(index));
+		}
+		
+		return tiles;
+	}
+	
+	public boolean isCollidableAt(int index){
+		for (int i = 0; i<tilelayers.size(); i++){
+			if(tilelayers.get(i).data.get(index).properties.keySet().contains("COLLIDABLE")){
+				return true;
+			}
+		}
+		return false;
+	}
 	
 
 }

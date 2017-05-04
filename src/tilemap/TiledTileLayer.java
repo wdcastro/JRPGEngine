@@ -55,7 +55,6 @@ public class TiledTileLayer{
 
 			for(int k = 0; k<tilesets.size();k++){
 				if(tilesets.get(k).tiles.keySet().contains(gid)){
-
 					System.out.println("added tile "+gid);
 					data.add(tilesets.get(k).tiles.get(gid));
 				} else {					
@@ -73,9 +72,9 @@ public class TiledTileLayer{
 	}
 	
 	public void draw(ArrayList<TiledTileSet> tilesets, GraphicsContext gc, Camera camera, TiledTileMap map){// camera
-		
+
 		for(int i = 0; i<data.size(); i++){
-			
+
 			Tile currentTile = data.get(i);
 			if(currentTile.gid == -1){
 				continue;
@@ -84,22 +83,26 @@ public class TiledTileLayer{
 			if(i%map.width >= (camera.left+camera.width)){
 				continue;
 			}
+			if(i%map.width < camera.left){
+				continue;
+			}
+			if(i/map.width < camera.up){
+				continue;
+			}
 			if(i/map.width > (camera.up+camera.height)){
 				break;
 			}
 			gc.drawImage(
 					tilesets.get(currentTile.tilesetIndex).image,
 					(currentTile.gid % currentTileset.numTilesAcross) * currentTileset.tilewidth,
-					(currentTile.gid/currentTileset.numTilesAcross)*currentTileset.tileheight,
+					(currentTile.gid/currentTileset.numTilesAcross) * currentTileset.tileheight,
 					currentTileset.tilewidth,
 					currentTileset.tileheight,
-					(i%(camera.width))*currentTileset.tilewidth,
-					(i/map.width)*currentTileset.tileheight,
+					((i-camera.left)%camera.width)*currentTileset.tilewidth,
+					((i/map.width)-camera.up)*currentTileset.tileheight,
 					currentTileset.tilewidth,
 					currentTileset.tileheight
 					);
-					
-			//TODO
 		}
 	}
 

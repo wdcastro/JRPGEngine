@@ -51,15 +51,7 @@ public class TiledTileSet {
 		){
 			return;
 		} else {
-			Tile tile = new Tile(Integer.parseInt(attributes.get("id"))+1, "tileset", tilesetIndex);
-			//DEAR WILLIAM
-			//THE TILE IDS ARE BEING PARSED INCORRECTLY
-			//SO WHEN YOU LOAD THE THING IN TILE LAYER TO GET TILES
-			//THE CORRECT ONES ARENT BEING RETURNED
-			//TILED IS SCREWING WITH ME
-			//			[209, 50, 211, 227, 52, 126, 127]
-			//			[208, 49, 210, 226, 51, 125, 126]
-			//you got gid and id wrong, id starts at 0, gid starts at 1
+			Tile tile = new Tile(Integer.parseInt(attributes.get("id")), "tileset", tilesetIndex);
 			for(int i = 0; i < children.size(); i++){
 				Element currentElement = children.get(i);
 				switch(currentElement.getName()){
@@ -68,20 +60,20 @@ public class TiledTileSet {
 					System.out.println("TiledTileSet: loading objectgroups");
 					tile.loadObjectGroup(currentElement);
 
-					tiles.put(tile.gid, tile);
+					tiles.put(tile.id, tile);
 					break;
 				case "animation":
 
 					System.out.println("TiledTileSet: loading animations");
 					tile.loadAnimations(currentElement);
 
-					tiles.put(tile.gid, tile);
+					tiles.put(tile.id, tile);
 					break;
 				case "properties":
 
 					System.out.println("TiledTileSet: loading properties");
 					tile.loadProperties(currentElement);
-					tiles.put(tile.gid, tile);
+					tiles.put(tile.id, tile);
 					break;
 				default:
 					System.err.println("loading unknown tag in TiledTileSet for Tile: "+currentElement.getName());					

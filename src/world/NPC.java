@@ -1,10 +1,11 @@
 package world;
 
+import javafx.scene.canvas.GraphicsContext;
 import misc.Interactable;
-import graphics.PixelSprite;
+import graphics.MapSprite;
 import graphics.SpriteInfo;
 
-public class NPC extends PixelSprite implements Interactable{
+public class NPC extends MapSprite implements Interactable{
 
 	String nearComment;
 	String farComment;
@@ -50,5 +51,23 @@ public class NPC extends PixelSprite implements Interactable{
 
 	public void moveRight(){
 	
+	}
+
+	@Override
+	public void init() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void playAnimation() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void draw(GraphicsContext gc) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -1,7 +1,7 @@
 package gamecomponents;
+import input.KeyHandler;
 import resources.ImageResourceManager;
 import resources.TextResourceManager;
-import resources.MapFileResourceManager;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -24,6 +24,8 @@ public class Game extends Application{
 	
 
 	public static final long MILLIS_TO_NANOS = 1000000;
+	
+	public static final KeyHandler keyhandler = new KeyHandler();
 	
 	public static void main(String[] args){
 		launch();
@@ -81,7 +83,6 @@ public class Game extends Application{
 		System.out.println("Text Resource loading complete");
 		
 		System.out.println("Map File Resource loading started...");
-		MapFileResourceManager.loadResourcesFromFile();
 		System.out.println("Map File Resource loading complete");
 		
 		stage.setTitle(TextResourceManager.texts.get("GAME_TITLE"));
@@ -90,6 +91,10 @@ public class Game extends Application{
 		
 		stage.setScene(scene);
 		stage.show();
+		
+		scene.setOnKeyPressed(keyhandler);
+
+		scene.setOnKeyReleased(keyhandler);
 
 		System.out.println("--------------------------------------------------");
 		System.out.println("Starting game");
