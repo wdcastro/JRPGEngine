@@ -5,7 +5,6 @@ import javafx.scene.input.MouseEvent;
 
 public class MouseHandler implements EventHandler<MouseEvent> {
 	
-	
 	boolean MOUSE_PRIMARY_DOWN = false;
 	boolean MOUSE_SECONDARY_DOWN = false;
 	boolean MOUSE_MIDDLE_DOWN = false;
@@ -28,7 +27,7 @@ public class MouseHandler implements EventHandler<MouseEvent> {
 		} else if (e.getButton().toString() == "MIDDLE"){
 			MOUSE_MIDDLE_DOWN = true;
 		}
-		System.out.println(e.getButton() + " PRESSED");
+		//System.out.println(e.getButton() + " PRESSED");
 	}
 	
 	public void handleMouseRelease(MouseEvent e){
@@ -39,7 +38,7 @@ public class MouseHandler implements EventHandler<MouseEvent> {
 		} else if (e.getButton().toString() == "MIDDLE"){
 			MOUSE_MIDDLE_DOWN = false;
 		}
-		System.out.println(e.getButton() + " RELEASED");
+		//System.out.println(e.getButton() + " RELEASED");
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
+import resources.MapResourceManager;
 import resources.TiledMapReader;
 import tilemap.Tile;
 import tilemap.TiledTileMap;
@@ -23,12 +24,12 @@ public class World extends Screen{
 	Camera camera;
 	ArrayList<NPC> npcs = new ArrayList<NPC>();
 	
-	public World(){
+	public World(String mapname){
 		player = new PlayerSprite(this, 0, 0);
 		double time = System.nanoTime();
 		System.out.println("World loading complete. Time taken : "+((System.nanoTime()-time)/Game.MILLIS_TO_NANOS)+" ms");
 		TiledMapReader tmr = new TiledMapReader();
-		map = tmr.read("res/mapdata/test city.tmx");
+		map = tmr.read(MapResourceManager.getMap(mapname));
 		if(map == null){
 			System.err.println("World(): Map returned null");
 			System.exit(1);
@@ -40,9 +41,8 @@ public class World extends Screen{
 				drawables.add(npcs.get(i));
 			}
 		}
-		System.out.println("Camera coords: "+camera.left+", "+camera.up+", "+camera.width+", "+camera.height);
+		System.out.println("Camera co-ordinates: "+camera.left+", "+camera.up+", "+camera.width+", "+camera.height);
 		System.out.println("--------------------------------------------------");
-		
 	}
 	
 	public void update(){

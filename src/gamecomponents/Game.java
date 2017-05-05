@@ -2,6 +2,8 @@ package gamecomponents;
 import input.KeyHandler;
 import input.MouseHandler;
 import resources.ImageResourceManager;
+import resources.MapResourceManager;
+import resources.StyleSheetResourceManager;
 import resources.TextResourceManager;
 import ui.DialogBox;
 import javafx.animation.AnimationTimer;
@@ -32,7 +34,7 @@ public class Game extends Application{
 	public static final KeyHandler keyhandler = new KeyHandler();
 	public static final MouseHandler mousehandler = new MouseHandler();
 	
-	public static final DialogBox dialogbox = new DialogBox();
+	public static DialogBox dialogbox;
 	
 	public static void main(String[] args){
 		launch();
@@ -89,9 +91,15 @@ public class Game extends Application{
 		TextResourceManager.loadResourcesFromFile();
 		System.out.println("Text Resource loading complete");
 		
-		System.out.println("Map File Resource loading started...");
-		//TODO: Load map file strings
-		System.out.println("Map File Resource loading complete");
+		System.out.println("Map Resource loading started...");
+		MapResourceManager.loadResourcesFromFile();
+		System.out.println("Map Resource loading complete");
+		
+		System.out.println("CSS Resource loading started...");
+		StyleSheetResourceManager.loadResourcesFromFile();
+		System.out.println("CSS Resource loading complete");
+		
+		dialogbox = new DialogBox();
 		
 		System.out.println("Adding dialog box...");
 		root.getChildren().add(dialogbox);

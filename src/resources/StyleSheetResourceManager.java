@@ -1,12 +1,21 @@
 package resources;
 
-
 import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
+import java.util.Hashtable;
 
-public class TextResourceManager {
-	public final static String resourceLocation = "res/resourcemanagerfiles/ENG_TEXT.resource";
-	public static HashMap<String, String> texts = new HashMap<String, String>();
+public class StyleSheetResourceManager {
+	public final static String resourceLocation = "res/resourcemanagerfiles/STYLESHEETS.resource";
+	static Hashtable<String, String> cssstrings = new Hashtable<String, String>();
+
+	public static String getStyleSheet(String name){
+		if(cssstrings.containsKey(name)){
+			return cssstrings.get(name);
+		} else {
+			System.err.println("Invalid stylesheet request: "+ name);
+			return "";
+		}
+		
+	}
 	
 	public static void loadResourcesFromFile(){
 		try {
@@ -17,7 +26,7 @@ public class TextResourceManager {
 				if(currentLine[0].startsWith("#")){
 					continue;
 				} else {
-					texts.put(currentLine[0].trim(), currentLine[1].trim());
+					cssstrings.put(currentLine[0].trim(), currentLine[1].trim());
 					System.out.println("Ref: "+currentLine[0] + " Line: "+currentLine[1]);
 				}
 			}

@@ -5,6 +5,7 @@ import gamecomponents.Game;
 import java.io.File;
 import java.util.ArrayDeque;
 
+import resources.StyleSheetResourceManager;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
@@ -30,7 +31,7 @@ public class DialogBox extends VBox{
 	boolean isTyping = false;
 	
 	public DialogBox(){
-		getStylesheets().add(new File("res/stylesheets/dialogbox.css").toURI().toString());
+		getStylesheets().add(new File(StyleSheetResourceManager.getStyleSheet("DIALOG_BOX")).toURI().toString());
 		setMinHeight(Game.SCREEN_HEIGHT*0.25);
 		setMinWidth(Game.SCREEN_WIDTH*0.90);
 		setSpacing(10);

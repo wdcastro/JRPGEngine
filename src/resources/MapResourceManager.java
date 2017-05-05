@@ -1,12 +1,21 @@
 package resources;
 
-
 import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
+import java.util.Hashtable;
 
-public class TextResourceManager {
-	public final static String resourceLocation = "res/resourcemanagerfiles/ENG_TEXT.resource";
-	public static HashMap<String, String> texts = new HashMap<String, String>();
+
+public class MapResourceManager {
+	public final static String resourceLocation = "res/resourcemanagerfiles/MAPS.resource";
+	static Hashtable<String, String> mapnames = new Hashtable<String, String>();
+	
+	public static String getMap(String name){
+		if(mapnames.containsKey(name)){
+			return mapnames.get(name);
+		} else {
+			System.err.println("Invalid map request: "+name);
+			return "";
+		}
+	}
 	
 	public static void loadResourcesFromFile(){
 		try {
@@ -17,7 +26,7 @@ public class TextResourceManager {
 				if(currentLine[0].startsWith("#")){
 					continue;
 				} else {
-					texts.put(currentLine[0].trim(), currentLine[1].trim());
+					mapnames.put(currentLine[0].trim(), currentLine[1].trim());
 					System.out.println("Ref: "+currentLine[0] + " Line: "+currentLine[1]);
 				}
 			}
@@ -25,4 +34,5 @@ public class TextResourceManager {
 			e.printStackTrace();
 		}
 	}
+
 }

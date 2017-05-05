@@ -16,11 +16,12 @@ public class Cutscene extends Screen{
 	public Cutscene(String filename){
 		//load from file
 		//create cast ie npc list
-		World w = new World();
+		World w = new World("TEST_CITY");
 		ArrayList<NPC> npcs = new ArrayList<NPC>();
-		for(int i = 0; i<3; i++){
-			npcs.add(new NPC(w,i,i,"Hello","HELLOOOO",new SpriteInfo("CHIBI_DRAGOON", 0,0,64,64)));
+		for(int i = 0; i<3; i++){// keep track of which npc is which with index
+			npcs.add(new NPC(w, i, i, "Hello", "HELLOOOO", "CHIBI_DRAGOON"));
 		}
+		w.loadNPCs(npcs);
 		//create world
 		//load cast into world
 		//animate etc etc etc

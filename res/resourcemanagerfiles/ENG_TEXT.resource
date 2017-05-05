@@ -1,0 +1,2 @@
+GAME_TITLE;; JRPG Engine
+GREETING;; Hello World

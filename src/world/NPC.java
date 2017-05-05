@@ -11,21 +11,21 @@ public class NPC extends MapSprite implements Interactable{
 
 	String nearComment;
 	String farComment;
-	SpriteInfo spriteinfo;
+	String spriteName;
 	Image sprite;
 	int currentFrame;
 	int x;
 	int y;
 	World world;
 	
-	public NPC(World world, int x, int y, String nearComment, String farComment, SpriteInfo spriteinfo){
+	public NPC(World world, int x, int y, String nearComment, String farComment, String spriteName){
 		this.x = x;
 		this.y = y;
 		this.nearComment = nearComment;
 		this.farComment = farComment;
-		this.spriteinfo = spriteinfo;
+		this.spriteName = spriteName;
 		this.world = world;
-		sprite = ImageResourceManager.getImage(spriteinfo.getImageName());
+		sprite = ImageResourceManager.getImage(spriteName);
 	}
 
 	@Override

@@ -25,7 +25,7 @@ public class GameStage {
 
 		drawingthread = new DrawingThread(canvas.getGraphicsContext2D(), this);
 		MenuScreen menuscreen = new MenuScreen();
-		World w = new World();
+		World w = new World("TEST_CITY");
 		AnimationTimer updateLoop = new AnimationTimer(){
 
 			@Override
