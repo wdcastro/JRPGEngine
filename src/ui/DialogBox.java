@@ -1,4 +1,5 @@
 package ui;
+
 import gamecomponents.Game;
 
 import java.io.File;
@@ -11,64 +12,60 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 
-public class DialogBox{
-	String text = "asdf";
+public class DialogBox extends VBox{
+	
+	String content;
 
-	Label label = new Label();
+	Label textDisplay = new Label();
 	int index = 0;
-	VBox vbox;
-	String substring = "";
+	String substring;
+	
 	float timer = 0;
 	float timePerChar = 50;
+	
 	boolean isShowing = false;
-	boolean isReady = false;
 	boolean isTyping = false;
 	
 	public DialogBox(){
-		vbox = new VBox();
-		vbox.getStylesheets().add(new File("res/stylesheets/dialogbox.css").toURI().toString());
-		vbox.setMinHeight(Game.SCREEN_HEIGHT*0.25);
-		vbox.setMinWidth(Game.SCREEN_WIDTH*0.90);
-		vbox.setSpacing(10);
-		vbox.setLayoutX(Game.SCREEN_WIDTH*0.05);
-		vbox.setLayoutY(Game.SCREEN_HEIGHT*0.70);
-		vbox.getStyleClass().add("dialogbox");
-		label.setText("");
-        label.setTextFill(Color.WHITE);
-        label.setFont(Font.font("Vernada",20));
-        label.toFront();
-        vbox.getChildren().add(label);
-		isReady = true;
+		getStylesheets().add(new File("res/stylesheets/dialogbox.css").toURI().toString());
+		setMinHeight(Game.SCREEN_HEIGHT*0.25);
+		setMinWidth(Game.SCREEN_WIDTH*0.90);
+		setSpacing(10);
+		setLayoutX(Game.SCREEN_WIDTH*0.05);
+		setLayoutY(Game.SCREEN_HEIGHT*0.70);
+		getStyleClass().add("hidden");
+		textDisplay.setText("");
+		textDisplay.setTextFill(Color.WHITE);
+		textDisplay.setFont(Font.font("Vernada",20));
+		textDisplay.toFront();
+        getChildren().add(textDisplay);
 	}
 	
 	public void show(){ 
 		index = 0;
 		timer = 0;
 		isTyping = true;
-		Platform.runLater(new Runnable(){
-			public void run(){
-				isShowing = true;
-				if(!gt.getBasePane().getChildren().contains(vbox)){
-
-					gt.getBasePane().getChildren().add(vbox);
-				}
-			}
-		});
+		isShowing = true;
+		getStyleClass().clear();
+		getStyleClass().add("dialogbox");
+		
 	}
 	
 	public void hide(){
-		Platform.runLater(new Runnable(){
-			public void run(){
-				label.setText("");
-				isShowing = false;
-				gt.getBasePane().getChildren().remove(vbox);
-				
-			}
-		});
+		getStyleClass().clear();
+		getStyleClass().add("hidden");
 	}
 	
-	public void setContent(String s){
-		text = s;
+	public void setContent(String content){
+		this.content = content;
+	}
+	
+	public void toggleShow(){
+		if(isShowing){
+			hide();
+		} else {
+			show();
+		}
 	}
 	
 	public void update(){
@@ -76,26 +73,22 @@ public class DialogBox{
 		timer += Game.delta_time/Game.MILLIS_TO_NANOS;
 		}
 		
-		if(index <= text.length() && timer >= timePerChar){
-			substring = text.substring(0, index);
-			label.setText(substring);
+		if(index <= content.length() && timer >= timePerChar){
+			substring = content.substring(0, index);
+			textDisplay.setText(substring);
 			index++;
 			timer = 0;
 		}
 		
-		if(index > text.length()){
+		if(index > content.length()){
 			isTyping = false;
 		}
 	}
 	
 	public void skip(){
-		label.setText(text);
-		index = text.length();
+		textDisplay.setText(content);
+		index = content.length();
 		isTyping = false;
-	}
-
-	public boolean isReady() {
-		return isReady;
 	}
 	
 	public boolean isShowing(){

@@ -8,6 +8,10 @@
 -fx-border-color: black;
 }
 
+.hidden{
+-fx-opacity: 0.0;
+}
+
 .label{
 -fx-opacity: 1.0;
 -fx-text-fill: #99fe00;

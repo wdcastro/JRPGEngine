@@ -22,8 +22,6 @@ public class GameStage {
 	
 	public GameStage(Canvas canvas){
 
-		
-
 		drawingthread = new DrawingThread(canvas.getGraphicsContext2D(), this);
 		MenuScreen menuscreen = new MenuScreen();
 		World w = new World();

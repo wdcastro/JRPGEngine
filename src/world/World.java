@@ -48,8 +48,12 @@ public class World extends Screen{
 	}
 
 	//public boolean itemExistsAt(int x, int y){ //check if an item exists on map on world coordinates
-
+		//ArrayList
 	//}
+	
+	public void loadNPCs(ArrayList<NPC> npcs){
+		this.npcs = npcs;
+	}
 	
 	public boolean isCollidableAt(int x, int y){
 		if(x < 0 || x > map.width || y < 0 || y > map.height){

@@ -1,13 +1,17 @@
 package gamecomponents;
 import input.KeyHandler;
+import input.MouseHandler;
 import resources.ImageResourceManager;
 import resources.TextResourceManager;
+import ui.DialogBox;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -26,6 +30,9 @@ public class Game extends Application{
 	public static final long MILLIS_TO_NANOS = 1000000;
 	
 	public static final KeyHandler keyhandler = new KeyHandler();
+	public static final MouseHandler mousehandler = new MouseHandler();
+	
+	public static final DialogBox dialogbox = new DialogBox();
 	
 	public static void main(String[] args){
 		launch();
@@ -83,7 +90,11 @@ public class Game extends Application{
 		System.out.println("Text Resource loading complete");
 		
 		System.out.println("Map File Resource loading started...");
+		//TODO: Load map file strings
 		System.out.println("Map File Resource loading complete");
+		
+		System.out.println("Adding dialog box...");
+		root.getChildren().add(dialogbox);
 		
 		stage.setTitle(TextResourceManager.texts.get("GAME_TITLE"));
 		stage.setResizable(false);
@@ -92,9 +103,12 @@ public class Game extends Application{
 		stage.setScene(scene);
 		stage.show();
 		
+		
+		
 		scene.setOnKeyPressed(keyhandler);
-
 		scene.setOnKeyReleased(keyhandler);
+		scene.setOnMousePressed(mousehandler);
+		scene.setOnMouseReleased(mousehandler);
 
 		System.out.println("--------------------------------------------------");
 		System.out.println("Starting game");

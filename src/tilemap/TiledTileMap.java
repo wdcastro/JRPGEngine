@@ -188,8 +188,7 @@ public class TiledTileMap extends Drawable{
 		ArrayList<Tile> tiles = new ArrayList<Tile>();
 		for (int i = 0; i<tilelayers.size(); i++){
 			tiles.add(tilelayers.get(i).data.get(index));
-		}
-		
+		}		
 		return tiles;
 	}
 	
