@@ -17,4 +17,9 @@ public class MenuScreen extends Screen {
 		drawables = new ArrayList<Drawable>();
 		drawables.add(new CGImage(ImageResourceManager.getImage(background), 0, 0, Game.SCREEN_WIDTH, Game.SCREEN_HEIGHT));
 	}
+
+	@Override
+	public String getScreenType() {
+		return "MENU";
+	}
 }

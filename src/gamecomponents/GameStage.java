@@ -18,6 +18,7 @@ public class GameStage {
 	//pass it to drawing thread
 	Image background;
 	DrawingThread drawingthread;
+	Screen currentScreen;
 	
 	
 	public GameStage(Canvas canvas){
@@ -30,6 +31,7 @@ public class GameStage {
 			@Override
 			public void handle(long arg0) {
 				w.update();
+				Game.dialogbox.update();
 			}
 			
 		};
@@ -38,12 +40,17 @@ public class GameStage {
 		updateLoop.start();
 		drawingthread.start();
 		System.out.println("DrawingThread started");
+		System.out.println("Displaying dialog");
+		String[] story = new String[]{"ABCD", "EFG", "HIJ"};
+		Game.dialogbox.setContent(story);
+		Game.dialogbox.show();
 		
 		
 	}
 	
 	public void setGameStage(Screen s){
 		//TODO: render css
+		currentScreen = s;
 		System.out.println("Game stage set to "+ s.getClass().toString());
 		drawingthread.updateDrawables(s.getDrawables()); // sprites are drawables
 		System.out.println("Starting drawing...");

@@ -1,6 +1,8 @@
 package world;
 
+import resources.ImageResourceManager;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import misc.Interactable;
 import graphics.MapSprite;
 import graphics.SpriteInfo;
@@ -10,16 +12,20 @@ public class NPC extends MapSprite implements Interactable{
 	String nearComment;
 	String farComment;
 	SpriteInfo spriteinfo;
+	Image sprite;
 	int currentFrame;
 	int x;
 	int y;
+	World world;
 	
-	public NPC(int x, int y, String nearComment, String farComment, SpriteInfo spriteinfo){
+	public NPC(World world, int x, int y, String nearComment, String farComment, SpriteInfo spriteinfo){
 		this.x = x;
 		this.y = y;
 		this.nearComment = nearComment;
 		this.farComment = farComment;
 		this.spriteinfo = spriteinfo;
+		this.world = world;
+		sprite = ImageResourceManager.getImage(spriteinfo.getImageName());
 	}
 
 	@Override
@@ -67,7 +73,11 @@ public class NPC extends MapSprite implements Interactable{
 
 	@Override
 	public void draw(GraphicsContext gc) {
-		// TODO Auto-generated method stub
+		if(x < world.camera.left || x > world.camera.left+world.camera.width || y< world.camera.up || y > world.camera.up+world.camera.height){
+			return;
+		}
+		gc.drawImage(sprite, (x-world.camera.left)*world.map.tilewidth, (y-world.camera.up)*world.map.tileheight, 64, 64);
+		
 		
 	}
 }

@@ -7,8 +7,9 @@ public abstract class Screen {
 	protected ArrayList<Drawable> drawables = new ArrayList<Drawable>();
 
 	public ArrayList<Drawable> getDrawables() {
-		// TODO Auto-generated method stub
 		return drawables;
 	}
+	
+	public abstract String getScreenType();
 	
 }

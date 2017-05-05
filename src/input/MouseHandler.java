@@ -18,7 +18,6 @@ public class MouseHandler implements EventHandler<MouseEvent> {
 		if(e.getEventType().toString() == "MOUSE_RELEASED"){
 			handleMouseRelease(e);
 		}
-		
 	}
 	
 	public void handleMousePress(MouseEvent e){

@@ -92,7 +92,6 @@ public class TiledTileMap extends Drawable{
 			}
 		}
 		tilelayers.add(layer);
-		System.out.println("loaded tilelayer");
 		
 	}
 	
@@ -127,7 +126,6 @@ public class TiledTileMap extends Drawable{
 	//set.loadImage();
 	//set.loadTileInfo()?
 		tilesets.add(set);
-		System.out.println("loaded tileset");
 	}
 	
 	public void loadObjectGroup(Element element){
@@ -167,7 +165,6 @@ public class TiledTileMap extends Drawable{
 		}
 		
 		objectgroups.add(group);
-		System.out.println("loaded objectgroup");
 	}
 	
 	public void update(Camera camera){

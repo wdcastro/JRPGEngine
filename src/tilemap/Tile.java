@@ -65,11 +65,8 @@ public class Tile {
 	}
 	
 	public void loadAnimations(Element element){
-
-		System.out.println("loading animations");
 		ArrayList<Element> children = element.getChildren();
 		for(int i = 0; i < children.size(); i++){
-			System.out.println("loading animations loop");
 			Element currentElement = children.get(i);
 			animations.add(Integer.parseInt(currentElement.getAttributes().get("tileid")));
 			durations.add(Float.parseFloat(currentElement.getAttributes().get("duration")));

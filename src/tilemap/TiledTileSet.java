@@ -56,22 +56,14 @@ public class TiledTileSet {
 				Element currentElement = children.get(i);
 				switch(currentElement.getName()){
 				case "objectgroup":
-
-					System.out.println("TiledTileSet: loading objectgroups");
 					tile.loadObjectGroup(currentElement);
-
 					tiles.put(tile.id, tile);
 					break;
 				case "animation":
-
-					System.out.println("TiledTileSet: loading animations");
 					tile.loadAnimations(currentElement);
-
 					tiles.put(tile.id, tile);
 					break;
 				case "properties":
-
-					System.out.println("TiledTileSet: loading properties");
 					tile.loadProperties(currentElement);
 					tiles.put(tile.id, tile);
 					break;
