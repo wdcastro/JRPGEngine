@@ -3,6 +3,7 @@ package gamecomponents;
 
 
 import resources.ImageResourceManager;
+import storytelling.Cutscene;
 import ui.MenuScreen;
 import world.World;
 import graphics.CGImage;
@@ -25,17 +26,17 @@ public class GameStage {
 
 		drawingthread = new DrawingThread(canvas.getGraphicsContext2D(), this);
 		MenuScreen menuscreen = new MenuScreen();
-		World w = new World("TEST_CITY");
+		Screen screen = new Cutscene("res/cutscenes/intro cutscene.txt");
 		AnimationTimer updateLoop = new AnimationTimer(){
 
 			@Override
 			public void handle(long arg0) {
-				w.update();
+				screen.update();
 				Game.dialogbox.update();
 			}
 			
 		};
-		setGameStage(w);
+		setGameStage(screen);
 
 		updateLoop.start();
 		drawingthread.start();

@@ -15,7 +15,7 @@ camera, default
 # spriteName - for loading from ImageResourceLoader
 # name - for reference in the story
 #####
-npc, 10, 10,,,elder, elder1
+npc, 10, 10,,,CHIBI_DRAGOON, elder1
 
 #####
 # Story

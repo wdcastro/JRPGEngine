@@ -16,10 +16,15 @@ public class PlayerSprite extends MapSprite{
 	int y;
 	double lastMoveTimer = System.currentTimeMillis();
 	float moveCd = 100;
+	boolean isControllable;
 	
 	public PlayerSprite(World world, int x, int y){
 		this.world = world;
 		sprite = ImageResourceManager.getImage("CHIBI_DRAGOON");
+	}
+	
+	public void setControllable(boolean control){
+		isControllable = control;
 	}
 
 	public void moveUp(){
@@ -72,7 +77,7 @@ public class PlayerSprite extends MapSprite{
 		// TODO Auto-generated method stub
 		//check for key press
 		//movement cd timer
-		if(System.currentTimeMillis()-lastMoveTimer>moveCd){
+		if(System.currentTimeMillis()-lastMoveTimer>moveCd && isControllable){
 			if(Game.keyhandler.isKeyDown("W")){
 				moveUp();
 			}

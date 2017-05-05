@@ -11,5 +11,7 @@ public abstract class Screen {
 	}
 	
 	public abstract String getScreenType();
+
+	public abstract void update();
 	
 }

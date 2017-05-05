@@ -22,4 +22,10 @@ public class MenuScreen extends Screen {
 	public String getScreenType() {
 		return "MENU";
 	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

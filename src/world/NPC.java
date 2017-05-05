@@ -10,7 +10,7 @@ import graphics.SpriteInfo;
 public class NPC extends MapSprite implements Interactable{
 
 	String nearComment;
-	String farComment;
+	public String farComment;
 	String spriteName;
 	Image sprite;
 	int currentFrame;
@@ -44,11 +44,11 @@ public class NPC extends MapSprite implements Interactable{
 	}
 	
 	public void moveUp(){
-		
+		y--;
 	}
 	
 	public void moveDown(){
-		
+		y++;
 	}
 	
 	public void moveLeft(){

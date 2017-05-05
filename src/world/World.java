@@ -18,11 +18,11 @@ public class World extends Screen{
 
 	//characters and units on world
 	
-	TiledTileMap map;
-	PlayerSprite player;
+	public TiledTileMap map;
+	public PlayerSprite player;
 
 	Camera camera;
-	ArrayList<NPC> npcs = new ArrayList<NPC>();
+	public ArrayList<NPC> npcs = new ArrayList<NPC>();
 	
 	public World(String mapname){
 		player = new PlayerSprite(this, 0, 0);
@@ -34,17 +34,15 @@ public class World extends Screen{
 			System.err.println("World(): Map returned null");
 			System.exit(1);
 		} else {
-			camera = new Camera(this, 0, 0, Game.SCREEN_WIDTH/map.tilewidth, Game.SCREEN_HEIGHT/map.tileheight);
+			setCamera(null);
 			drawables.add(map);
 			drawables.add(player);
-			for(int i = 0; i < npcs.size(); i++){
-				drawables.add(npcs.get(i));
-			}
 		}
 		System.out.println("Camera co-ordinates: "+camera.left+", "+camera.up+", "+camera.width+", "+camera.height);
 		System.out.println("--------------------------------------------------");
 	}
 	
+	@Override
 	public void update(){
 		map.update(camera);
 		player.update();
@@ -62,7 +60,8 @@ public class World extends Screen{
 	}
 	
 	public void loadNPCs(ArrayList<NPC> npcs){
-		this.npcs = npcs;
+		this.npcs.addAll(npcs);
+		drawables.addAll(npcs);
 	}
 	
 	public boolean isCollidableAt(int x, int y){
@@ -75,6 +74,14 @@ public class World extends Screen{
 			}
 		}
 		return map.isCollidableAt((y*map.width) + x); //TODO: add npc check
+	}
+	
+	public void setCamera(Camera camera){
+		if(camera == null){
+			this.camera = new Camera(this, 0, 0, Game.SCREEN_WIDTH/map.tilewidth, Game.SCREEN_HEIGHT/map.tileheight);
+		} else {
+			this.camera = camera;
+		}
 	}
 
 	@Override
