@@ -8,8 +8,13 @@ public class TiledProperty {
 	
 	public TiledProperty(String name, String type, String value){
 		this.name = name;
-		this.type = type;
 		this.value = value;
+		if(type == null){
+			this.type = "string";
+		} else {
+			this.type = type;
+		}
+		System.out.println("New property: "+name+", "+type+" ,"+value);
 		if(name == "" || type == ""){
 			System.err.println("Passed empty string as parameter for TiledProperty");
 		}

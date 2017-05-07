@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javafx.animation.AnimationTimer;
+import javafx.scene.input.MouseEvent;
 import resources.FileReader;
 import world.Camera;
 import world.NPC;
@@ -15,11 +16,11 @@ import graphics.Screen;
 import graphics.SpriteInfo;
 
 public class Cutscene extends Screen{
-//contains lines, animations, input, choices?, tbd, cg?
-	//do it megaman style, have its own inputhandler, controller and dialog box
+	
 	World world = null;
 	Camera camera = null;
 	HashMap<String, NPC> npcs = new HashMap<String, NPC>();
+	ArrayList<String> script = new ArrayList<String>();
 	
 	public Cutscene(String filename){
 		//load from file
@@ -31,7 +32,7 @@ public class Cutscene extends Screen{
 			if(lines[i].startsWith("#")){
 				continue;
 			} else {
-				String[] commands = lines[i].split(",");
+				String[] commands = lines[i].split(";");
 				switch(commands[0].trim()){
 				case "map":
 					world = new World(commands[1].trim());
@@ -67,6 +68,11 @@ public class Cutscene extends Screen{
 							commands[5].trim()));
 					break;
 				default:
+					String line = lines[i].trim();
+					if(!line.isEmpty()){
+						script.add(line);
+						System.out.println(lines[i].trim());
+					}
 					break;
 					
 				}
@@ -84,23 +90,28 @@ public class Cutscene extends Screen{
 
 			@Override
 			public void handle(long now) {
-				if((now - lastTime)/Game.MILLIS_TO_NANOS >= 1000){
-					System.out.println(lastTime);
+				if((now - lastTime)/Game.MILLIS_TO_NANOS >= 500){
 					lastTime = now;
-					if(direction){
-						npcs.get("elder1").moveUp();
-						moveCount++;
-						if(moveCount == 3){
-							direction = !direction;
-							moveCount = 0;
+					if(moveCount < 3){
+						if(direction){
+							if(!world.isCollidableAt(npcs.get("elder1").x, npcs.get("elder1").y-1)){
+								npcs.get("elder1").moveUp();
+								moveCount++;
+							}
+						} else {
+							if(!world.isCollidableAt(npcs.get("elder1").x, npcs.get("elder1").y+1)){
+								npcs.get("elder1").moveDown();
+								moveCount++;
+							}
 						}
-					} else {
-						npcs.get("elder1").moveDown();
+					}
+					if(moveCount >= 3){
 						moveCount++;
-						if(moveCount == 3){
-							direction = !direction;
-							moveCount = 0;
-						}
+					}
+					if(moveCount == 6){
+						direction = !direction;
+						moveCount = 0;
+						world.player.setControllable(true);
 					}
 				}
 			}
@@ -135,6 +146,12 @@ public class Cutscene extends Screen{
 	@Override
 	public void update() {
 		world.update();
+		
+	}
+
+	@Override
+	public void handleMousePress(MouseEvent e) {
+		//forward();
 		
 	}
 }

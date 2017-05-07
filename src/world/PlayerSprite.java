@@ -16,7 +16,7 @@ public class PlayerSprite extends MapSprite{
 	int y;
 	double lastMoveTimer = System.currentTimeMillis();
 	float moveCd = 100;
-	boolean isControllable;
+	boolean isControllable = true;
 	
 	public PlayerSprite(World world, int x, int y){
 		this.world = world;

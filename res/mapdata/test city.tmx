@@ -25,7 +25,7 @@
   </tile>
   <tile id="124">
    <properties>
-    <property name="COLLIDABLE" value="true"/>
+    <property name="COLLIDABLE" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="125">
@@ -36,12 +36,14 @@
   <tile id="126">
    <properties>
     <property name="COLLIDABLE" value="true"/>
+    <property name="farInteract" value="I see some potatoes there"/>
     <property name="nearInteract" value="A POTATO"/>
    </properties>
   </tile>
   <tile id="127">
    <properties>
     <property name="COLLIDABLE" value="true"/>
+    <property name="farInteract" value="I see some tomatoes there"/>
     <property name="nearInteract" value="Tomatoes are nice"/>
    </properties>
   </tile>
@@ -7142,7 +7144,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="125"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>

@@ -7,6 +7,7 @@ import graphics.Screen;
 
 import java.util.ArrayList;
 
+import javafx.scene.input.MouseEvent;
 import resources.ImageResourceManager;
 
 public class MenuScreen extends Screen {
@@ -25,6 +26,12 @@ public class MenuScreen extends Screen {
 
 	@Override
 	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void handleMousePress(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}

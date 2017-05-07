@@ -33,6 +33,7 @@ public class Game extends Application{
 	
 	public static final KeyHandler keyhandler = new KeyHandler();
 	public static final MouseHandler mousehandler = new MouseHandler();
+	public static GameStage gamestage;
 	
 	public static DialogBox dialogbox;
 	
@@ -122,8 +123,8 @@ public class Game extends Application{
 		System.out.println("Starting game");
 		System.out.println("--------------------------------------------------");
 
-		@SuppressWarnings("unused")
-		GameStage gamestage = new GameStage(canvas);
+		
+		gamestage = new GameStage(canvas);
 		
 	}
 

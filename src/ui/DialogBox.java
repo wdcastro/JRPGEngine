@@ -5,22 +5,30 @@ import gamecomponents.Game;
 import java.io.File;
 import java.util.ArrayDeque;
 
+import resources.ImageResourceManager;
 import resources.StyleSheetResourceManager;
-import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 
-public class DialogBox extends VBox{
+public class DialogBox extends HBox{
 	
 	ArrayDeque<String> content = new ArrayDeque<String>();
-	String currentString;
+	String currentString = "";
+    ImageView portrait = new ImageView();
+
+    VBox portraitBox = new VBox();
 
 	Label textDisplay = new Label();
+	Label nameplate = new Label("");
 	int index = 0;
 	String substring;
 	
@@ -31,10 +39,9 @@ public class DialogBox extends VBox{
 	boolean isTyping = false;
 	
 	public DialogBox(){
-		getStylesheets().add(new File(StyleSheetResourceManager.getStyleSheet("DIALOG_BOX")).toURI().toString());
+		getStylesheets().add(new File(StyleSheetResourceManager.getStyleSheet("DIALOG_BOX")).toURI().toString());	 
 		setMinHeight(Game.SCREEN_HEIGHT*0.25);
 		setMinWidth(Game.SCREEN_WIDTH*0.90);
-		setSpacing(10);
 		setLayoutX(Game.SCREEN_WIDTH*0.05);
 		setLayoutY(Game.SCREEN_HEIGHT*0.70);
 		getStyleClass().add("hidden");
@@ -42,6 +49,15 @@ public class DialogBox extends VBox{
 		textDisplay.setTextFill(Color.WHITE);
 		textDisplay.setFont(Font.font("Vernada",20));
 		textDisplay.toFront();
+		portrait.setPreserveRatio(true);
+		portrait.setFitHeight(this.getMinHeight());
+       
+		portraitBox.getChildren().add(nameplate);
+		portraitBox.getChildren().add(portrait);
+		portraitBox.setMinWidth(this.getMinHeight());
+		portraitBox.setMinHeight(this.getMinHeight());
+		portraitBox.setAlignment(Pos.CENTER);
+        getChildren().add(portraitBox);
         getChildren().add(textDisplay);
         setOnMouseClicked(new EventHandler<MouseEvent>(){
 
@@ -70,7 +86,8 @@ public class DialogBox extends VBox{
 		isTyping = false;
 	}
 	
-	public void show(){ 
+	private void show(){
+		textDisplay.setText("");
 		index = 0;
 		timer = 0;
 		isTyping = true;
@@ -81,9 +98,18 @@ public class DialogBox extends VBox{
 		
 	}
 	
-	public void hide(){
+	private void setSpeaker(Image image, String name){
+		portrait.setImage(image);
+		portraitBox.getChildren().remove(portrait);
+		portraitBox.getChildren().add(portrait);
+		nameplate.setText(name);
+	}
+	
+	private void hide(){
+		setSpeaker(null, "");
 		getStyleClass().clear();
 		getStyleClass().add("hidden");
+		
 	}
 	
 	public void setContent(String content){
@@ -91,13 +117,25 @@ public class DialogBox extends VBox{
 		this.content.addLast(content);
 	}
 	
-	public void setContent(String[] content){
+	private void setContent(String[] content){
 		this.content.clear();
 		for(int i = 0; i<content.length;i++){
 			this.content.addLast(content[i]);
 		}
 	}
+	
+	public void say(String speaker, String portraitName, String content){
+		setSpeaker(ImageResourceManager.getImage(portraitName), speaker);
+		setContent(content);
+		show();		
+	}
 
+	
+	public void say(String speaker, String portraitName, String[] content){
+		setSpeaker(ImageResourceManager.getImage(portraitName), speaker);
+		setContent(content);
+		show();		
+	}
 	public void update(){
 		if(isTyping){
 		timer += Game.delta_time/Game.MILLIS_TO_NANOS;

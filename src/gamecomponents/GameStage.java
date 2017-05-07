@@ -19,14 +19,15 @@ public class GameStage {
 	//pass it to drawing thread
 	Image background;
 	DrawingThread drawingthread;
-	Screen currentScreen;
+	public Screen currentScreen;
 	
 	
 	public GameStage(Canvas canvas){
 
 		drawingthread = new DrawingThread(canvas.getGraphicsContext2D(), this);
 		MenuScreen menuscreen = new MenuScreen();
-		Screen screen = new Cutscene("res/cutscenes/intro cutscene.txt");
+		//Screen screen = new Cutscene("res/cutscenes/intro cutscene.txt");
+		Screen screen = new World("TEST_CITY");
 		AnimationTimer updateLoop = new AnimationTimer(){
 
 			@Override
@@ -41,10 +42,6 @@ public class GameStage {
 		updateLoop.start();
 		drawingthread.start();
 		System.out.println("DrawingThread started");
-		System.out.println("Displaying dialog");
-		String[] story = new String[]{"ABCD", "EFG", "HIJ"};
-		Game.dialogbox.setContent(story);
-		Game.dialogbox.show();
 		
 		
 	}

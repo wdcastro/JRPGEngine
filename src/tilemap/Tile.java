@@ -16,6 +16,9 @@ public class Tile {
 	private int currentFrame = 0;
 	private double lastUpdateTime;
 	public int tilesetIndex;
+	boolean specialTile = false;
+	boolean animatedTile = false;
+	boolean hasObject = false;
 	
 	public Tile(int id, String type, int tilesetIndex){
 		if(type == "data"){
@@ -87,5 +90,42 @@ public class Tile {
 		}
 		
 	}
+	
+	public void setAnimatedTile(boolean set){
+		animatedTile = set;
+	}
+	
+	public boolean isAnimatedTile(){
+		return animatedTile;
+	}
+	
+	public void setHasObject(boolean set){
+		hasObject = set;
+	}
+	
+	public boolean hasObject(){
+		return hasObject;
+	}
+	
+	public boolean isInteractableTile(){
+		return (properties.containsKey("nearInteract") || properties.containsKey("farInteract"));
+	}
+	
+	public boolean isSpecialTile(){
+		return (isAnimatedTile() || hasObject() || isInteractableTile());
+	}
 
+	public void farInteract() {
+		if(properties.containsKey("farInteract")){
+			System.out.println(properties.get("farInteract").getValue());
+			//TODO:Parse interact commands
+		}
+		
+	}
+
+	public void nearInteract() {
+		if(properties.containsKey("nearInteract")){
+			System.out.println(properties.get("nearInteract").getValue());
+		}
+	}
 }

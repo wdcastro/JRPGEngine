@@ -57,19 +57,19 @@ public class TiledTileSet {
 				switch(currentElement.getName()){
 				case "objectgroup":
 					tile.loadObjectGroup(currentElement);
-					tiles.put(tile.id, tile);
+					tile.setHasObject(true);
 					break;
 				case "animation":
 					tile.loadAnimations(currentElement);
-					tiles.put(tile.id, tile);
+					tile.setAnimatedTile(true);
 					break;
 				case "properties":
 					tile.loadProperties(currentElement);
-					tiles.put(tile.id, tile);
 					break;
 				default:
 					System.err.println("loading unknown tag in TiledTileSet for Tile: "+currentElement.getName());					
 				}
+				tiles.put(tile.id, tile);
 			}
 		}
 		

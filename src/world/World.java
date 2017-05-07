@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import resources.MapResourceManager;
 import resources.TiledMapReader;
 import tilemap.Tile;
@@ -37,6 +38,9 @@ public class World extends Screen{
 			setCamera(null);
 			drawables.add(map);
 			drawables.add(player);
+			NPC npc = new NPC(this, 3,3, "yoohohoho", "helloooo", "Elder");
+			npc.setPortrait("CHIBI_DRAGOON");
+			loadNPC(npc);
 		}
 		System.out.println("Camera co-ordinates: "+camera.left+", "+camera.up+", "+camera.width+", "+camera.height);
 		System.out.println("--------------------------------------------------");
@@ -51,12 +55,38 @@ public class World extends Screen{
 		}
 	}
 
-	//public boolean itemExistsAt(int x, int y){ //check if an item exists on map on world coordinates
-		//ArrayList
-	//}
+	public boolean itemExistsAt(int x, int y){ //check if an item exists on map on world coordinates
+		ArrayList<Tile> items = map.getTilesAt(y*map.width+x);
+		for(int i = 0; i<items.size(); i++){
+			if(items.get(i).isSpecialTile()){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public Tile interactableExistsAt(int x, int y){ //check if an item exists on map on world coordinates
+		ArrayList<Tile> items = map.getTilesAt(y*map.width+x);
+		for(int i = 0; i<items.size(); i++){
+			if(items.get(i).isInteractableTile()){
+				return items.get(i);
+			}
+		}
+		return null;
+	}
+	
+	public NPC npcExistsAt(int x, int y){
+		for(int i = 0; i<npcs.size(); i++){
+			if(npcs.get(i).x == x && npcs.get(i).y == y){
+				return npcs.get(i);
+			}
+		}
+		return null;
+	}
 	
 	public void loadNPC(NPC npc){
 		this.npcs.add(npc);
+		drawables.add(npc);
 	}
 	
 	public void loadNPCs(ArrayList<NPC> npcs){
@@ -66,7 +96,10 @@ public class World extends Screen{
 	
 	public boolean isCollidableAt(int x, int y){
 		if(x < 0 || x > map.width || y < 0 || y > map.height){
-			return false;
+			return true;
+		}
+		if(player.x == x && player.y == y){
+			return true;
 		}
 		for(int i = 0; i < npcs.size(); i++){
 			if(npcs.get(i).x == x && npcs.get(i).y == y){
@@ -87,6 +120,36 @@ public class World extends Screen{
 	@Override
 	public String getScreenType() {
 		return "WORLD";
+	}
+	
+	public boolean isPlayerAdjacent(int x, int y){
+		return ((Math.abs(x - player.x) == 0 && Math.abs(y - player.y) == 1) || (Math.abs(x - player.x) == 1 && Math.abs(y - player.y) == 0));
+	}
+
+	@Override
+	public void handleMousePress(MouseEvent e) {
+		double mousex = e.getX();
+		double mousey = e.getY();
+		int worldx = (int) (mousex/map.tilewidth)+camera.left;
+		int worldy = (int) (mousey/map.tileheight)+camera.up;
+		NPC npc;
+		Tile tile;
+		if((npc = npcExistsAt(worldx, worldy)) != null){
+			if(isPlayerAdjacent(worldx, worldy)){
+				npc.nearInteract();
+			} else {
+				npc.farInteract();
+			}
+		} else if((tile = interactableExistsAt(worldx, worldy)) != null){
+			
+			if(isPlayerAdjacent(worldx, worldy)){
+				tile.nearInteract();
+			} else {
+				tile.farInteract();
+			}
+		}
+		
+		
 	}
 	
 }

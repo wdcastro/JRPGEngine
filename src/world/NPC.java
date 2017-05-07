@@ -3,6 +3,7 @@ package world;
 import resources.ImageResourceManager;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import misc.CommandExecutionManager;
 import misc.Interactable;
 import graphics.MapSprite;
 import graphics.SpriteInfo;
@@ -11,31 +12,50 @@ public class NPC extends MapSprite implements Interactable{
 
 	String nearComment;
 	public String farComment;
-	String spriteName;
+	String npcname;
+	String portraitName = "";
 	Image sprite;
 	int currentFrame;
-	int x;
-	int y;
+	public int x;
+	public int y;
 	World world;
 	
-	public NPC(World world, int x, int y, String nearComment, String farComment, String spriteName){
+	public NPC(World world, int x, int y, String nearComment, String farComment, String npcname){
 		this.x = x;
 		this.y = y;
 		this.nearComment = nearComment;
 		this.farComment = farComment;
-		this.spriteName = spriteName;
+		this.npcname = npcname;
 		this.world = world;
-		sprite = ImageResourceManager.getImage(spriteName);
+		setSprite(npcname.trim().toUpperCase()+"_SPRITE");
+	}
+	
+	public void setPortrait(String s){
+		portraitName = s;
+	}
+	
+	public void setSprite(String s){
+		sprite = ImageResourceManager.getImage(s);
 	}
 
 	@Override
 	public void nearInteract() {
-		System.out.println(nearComment);
+		CommandExecutionManager.execute(
+				"say"+";"+
+				npcname+";"+
+				portraitName+";"+
+				nearComment
+				);
 	}
 
 	@Override
 	public void farInteract() {
-		System.out.println(farComment);
+		CommandExecutionManager.execute(
+				"say"+";"+
+				npcname+";"+
+				""+";"+
+				farComment
+				);
 	}
 	
 	public void update(){
