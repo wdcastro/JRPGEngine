@@ -1,4 +1,5 @@
 package gamecomponents;
+import audio.SFXPlayer;
 import input.KeyHandler;
 import input.MouseHandler;
 import resources.ImageResourceManager;
@@ -36,6 +37,8 @@ public class Game extends Application{
 	public static GameStage gamestage;
 	
 	public static DialogBox dialogbox;
+
+	public static Group root = new Group();
 	
 	public static void main(String[] args){
 		launch();
@@ -44,7 +47,6 @@ public class Game extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-		Group root = new Group();
 		Scene scene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT, Color.BLACK);
 		Canvas canvas = new Canvas(SCREEN_WIDTH, SCREEN_HEIGHT);
 		Label label = new Label();
@@ -99,6 +101,10 @@ public class Game extends Application{
 		System.out.println("CSS Resource loading started...");
 		StyleSheetResourceManager.loadResourcesFromFile();
 		System.out.println("CSS Resource loading complete");
+		
+		System.out.println("SFX loading started...");
+		SFXPlayer.loadResourcesFromFile();
+		System.out.println("SFX loading complete");
 		
 		dialogbox = new DialogBox();
 		

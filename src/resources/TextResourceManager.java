@@ -18,11 +18,14 @@ public class TextResourceManager {
 					continue;
 				} else {
 					texts.put(currentLine[0].trim(), currentLine[1].trim());
-					System.out.println("Ref: "+currentLine[0] + " Line: "+currentLine[1]);
 				}
 			}
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static String getString(String s){
+		return texts.get(s);
 	}
 }

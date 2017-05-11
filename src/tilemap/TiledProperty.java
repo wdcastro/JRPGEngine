@@ -14,7 +14,6 @@ public class TiledProperty {
 		} else {
 			this.type = type;
 		}
-		System.out.println("New property: "+name+", "+type+" ,"+value);
 		if(name == "" || type == ""){
 			System.err.println("Passed empty string as parameter for TiledProperty");
 		}

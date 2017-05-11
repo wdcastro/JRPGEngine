@@ -1,2 +1,4 @@
 GAME_TITLE;; JRPG Engine
 GREETING;; Hello World
+PARTY_BTN;; Party
+QUEST_BTN;; Quest

@@ -2,7 +2,9 @@ package world;
 
 import java.util.ArrayList;
 
+import menu.PauseMenu;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import resources.MapResourceManager;
@@ -21,12 +23,15 @@ public class World extends Screen{
 	
 	public TiledTileMap map;
 	public PlayerSprite player;
+	boolean inMenu = false;
+	boolean enterDown = false;
+	PauseMenu pausemenu = new PauseMenu();
 
 	Camera camera;
 	public ArrayList<NPC> npcs = new ArrayList<NPC>();
 	
 	public World(String mapname){
-		player = new PlayerSprite(this, 0, 0);
+		player = new PlayerSprite(this, 3, 3);
 		double time = System.nanoTime();
 		System.out.println("World loading complete. Time taken : "+((System.nanoTime()-time)/Game.MILLIS_TO_NANOS)+" ms");
 		TiledMapReader tmr = new TiledMapReader();
@@ -38,9 +43,6 @@ public class World extends Screen{
 			setCamera(null);
 			drawables.add(map);
 			drawables.add(player);
-			NPC npc = new NPC(this, 3,3, "yoohohoho", "helloooo", "Elder");
-			npc.setPortrait("CHIBI_DRAGOON");
-			loadNPC(npc);
 		}
 		System.out.println("Camera co-ordinates: "+camera.left+", "+camera.up+", "+camera.width+", "+camera.height);
 		System.out.println("--------------------------------------------------");
@@ -53,6 +55,29 @@ public class World extends Screen{
 		for(int i = 0; i < npcs.size(); i++){
 			npcs.get(i).update();
 		}
+		
+		handleMenuKeys();
+	}
+
+	private void handleMenuKeys() {
+		if(!enterDown && Game.keyhandler.isKeyDown("ENTER")){
+			enterDown = true;
+		}
+		
+		if(enterDown && !Game.keyhandler.isKeyDown("ENTER")){
+			if(inMenu){
+				//hide menu
+				Game.root.getChildren().remove(pausemenu);
+				System.out.println("menu closed");
+			} else {
+				Game.root.getChildren().add(pausemenu);
+				System.out.println("menu open");
+			}
+			inMenu = !inMenu;
+			enterDown = false;
+		}
+		
+		
 	}
 
 	public boolean itemExistsAt(int x, int y){ //check if an item exists on map on world coordinates

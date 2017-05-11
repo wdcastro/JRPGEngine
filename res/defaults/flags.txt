@@ -1,0 +1,17 @@
+intro cutscene: false
+found glasses: false
+found bell: false
+found rope: false
+festival cutscene: false
+children enter: false
+talk to child 1: false
+talk to child 2: false
+talk to child 3: false
+denial scene: false
+found broken picture: false
+second group of kids: false
+pick up photo: false
+cat cutscene: false
+am i actually dead: false
+memory recalled: false
+ending scene: false

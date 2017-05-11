@@ -1,5 +1,6 @@
 package world;
 
+import audio.SFXPlayer;
 import resources.ImageResourceManager;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;

@@ -27,7 +27,6 @@ public class StyleSheetResourceManager {
 					continue;
 				} else {
 					cssstrings.put(currentLine[0].trim(), currentLine[1].trim());
-					System.out.println("Ref: "+currentLine[0] + " Line: "+currentLine[1]);
 				}
 			}
 		} catch (UnsupportedEncodingException e) {

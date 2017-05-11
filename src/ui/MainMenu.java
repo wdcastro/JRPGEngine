@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import javafx.scene.input.MouseEvent;
 import resources.ImageResourceManager;
 
-public class MenuScreen extends Screen {
+public class MainMenu extends Screen {
 	public String background = "MAIN_MENU_BG";
 	//css
 	
-	public MenuScreen(){
+	public MainMenu(){
 		drawables = new ArrayList<Drawable>();
 		drawables.add(new CGImage(ImageResourceManager.getImage(background), 0, 0, Game.SCREEN_WIDTH, Game.SCREEN_HEIGHT));
 	}

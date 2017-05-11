@@ -1,0 +1,1 @@
+BUTTON_OK;; res/sound/buttonclick.mp3

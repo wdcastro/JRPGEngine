@@ -4,7 +4,7 @@ package gamecomponents;
 
 import resources.ImageResourceManager;
 import storytelling.Cutscene;
-import ui.MenuScreen;
+import ui.MainMenu;
 import world.World;
 import graphics.CGImage;
 import graphics.DrawingThread;
@@ -20,19 +20,19 @@ public class GameStage {
 	Image background;
 	DrawingThread drawingthread;
 	public Screen currentScreen;
-	
+	public Screen prevScreen;
 	
 	public GameStage(Canvas canvas){
 
 		drawingthread = new DrawingThread(canvas.getGraphicsContext2D(), this);
-		MenuScreen menuscreen = new MenuScreen();
+		//Screen screen = new MainMenu();
 		//Screen screen = new Cutscene("res/cutscenes/intro cutscene.txt");
-		Screen screen = new World("TEST_CITY");
+		Screen screen = new World("MANSION");
 		AnimationTimer updateLoop = new AnimationTimer(){
 
 			@Override
 			public void handle(long arg0) {
-				screen.update();
+				currentScreen.update();
 				Game.dialogbox.update();
 			}
 			
@@ -42,12 +42,21 @@ public class GameStage {
 		updateLoop.start();
 		drawingthread.start();
 		System.out.println("DrawingThread started");
+		PlayerData.loadDefaults();
 		
 		
 	}
 	
+	public void backToPrevScreen(){
+		Screen tempScreen = prevScreen;
+		setGameStage(tempScreen);
+		tempScreen = null;
+	}
+	
 	public void setGameStage(Screen s){
+		System.out.println(s);
 		//TODO: render css
+		prevScreen = currentScreen;
 		currentScreen = s;
 		System.out.println("Game stage set to "+ s.getClass().toString());
 		drawingthread.updateDrawables(s.getDrawables()); // sprites are drawables
