@@ -67,6 +67,10 @@ public class Cutscene extends Screen{
 							commands[4].trim(),
 							commands[5].trim()));
 					break;
+				case "item":
+					break;
+				case "action":
+					break;
 				default:
 					String line = lines[i].trim();
 					if(!line.isEmpty()){

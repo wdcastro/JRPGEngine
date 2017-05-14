@@ -1,5 +1,7 @@
 package world;
 
+import javafx.animation.AnimationTimer;
+
 public class Camera {
 	public volatile int up;
 	public volatile int left;
@@ -19,7 +21,7 @@ public class Camera {
 	
 	public void moveUp(){// check for player screen lock
 		if(up>0 && world.player.y<=up+(height/2)){
-			up--;	
+			up--;
 		}
 	}
 	
@@ -40,5 +42,23 @@ public class Camera {
 		if(left+width<world.map.width && world.player.x>=left+(width/2)){
 			left++;
 		}
+	}
+	
+	public void centerOn(int x, int y){
+		left = x-(width/2);
+		up = y-(height/2);
+		if(left < 0){
+			left = 0;
+		}
+		if(up < 0){
+			up = 0;
+		}
+		if(left+width >= world.map.width){
+			left = world.map.width - width;
+		}
+		if(up+height >= world.map.height){
+			up = world.map.height - height;
+		}
+		
 	}
 }

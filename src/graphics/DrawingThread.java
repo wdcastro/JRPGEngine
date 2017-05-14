@@ -1,5 +1,6 @@
 package graphics;
 
+import gamecomponents.Game;
 import gamecomponents.GameStage;
 
 import java.util.ArrayList;
@@ -55,6 +56,7 @@ public class DrawingThread extends Thread{
 	public void draw(){
 		//get list of drawables from gamestage
 		//loop and draw
+		gc.fillRect(0, 0, Game.SCREEN_WIDTH, Game.SCREEN_HEIGHT);
 		for(int i = 0; i<drawables.size(); i++){
 			Drawable d = drawables.get(i);
 			d.draw(gc);

@@ -31,7 +31,7 @@ public class World extends Screen{
 	public ArrayList<NPC> npcs = new ArrayList<NPC>();
 	
 	public World(String mapname){
-		player = new PlayerSprite(this, 3, 3);
+		player = new PlayerSprite(this, 17, 14);
 		double time = System.nanoTime();
 		System.out.println("World loading complete. Time taken : "+((System.nanoTime()-time)/Game.MILLIS_TO_NANOS)+" ms");
 		TiledMapReader tmr = new TiledMapReader();
@@ -137,6 +137,7 @@ public class World extends Screen{
 	public void setCamera(Camera camera){
 		if(camera == null){
 			this.camera = new Camera(this, 0, 0, Game.SCREEN_WIDTH/map.tilewidth, Game.SCREEN_HEIGHT/map.tileheight);
+			this.camera.centerOn(player.x, player.y);
 		} else {
 			this.camera = camera;
 		}

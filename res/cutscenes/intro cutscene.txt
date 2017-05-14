@@ -6,7 +6,9 @@ camera; default
 #camera; 0; 0; 20; 12
 
 #####
-# NPCS:
+# NPCS 
+# Usage
+# npc; x; y; nearInteract; farInteract; spriteName; name;
 #####
 # npc - tells us to assign a new npc
 # x; y - where to spawn
@@ -19,13 +21,19 @@ npc; 10; 10;;;CHIBI_DRAGOON; elder1
 
 #####
 # Story
+# action; npc name; action to take
+# item; item name; quantity
+# flag; flag name; boolean
 #####
-# name - name defined in npcs/ item/ flag
+# npc name - a name defined under the npc section above
+# action to take - animation or dialog for the npc to take
 # command - animation or dialog
+# item name - item defined in items section in resources file (external file)
+# flag name - name for flag defined in flags resource file (external file)
 #####
-elder1; moveLeft
-elder1; moveLeft
-elder1; YAHARRO
-elder1; I was starting to get lonely without anyone here
+action; elder1; moveLeft
+action; elder1; moveLeft
+dialog; elder1; YAHARRO
+dialog; elder1; I was starting to get lonely without anyone here
 item; potion; 1
 flag; intro; true

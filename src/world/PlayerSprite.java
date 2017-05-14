@@ -24,7 +24,7 @@ public class PlayerSprite extends MapSprite{
 	int x;
 	int y;
 	double lastMoveTimer = System.currentTimeMillis();
-	float moveCd = 200;
+	float moveCooldown = 150;
 	boolean isControllable = true;
 	
 	public PlayerSprite(World world, int x, int y){
@@ -115,7 +115,7 @@ public class PlayerSprite extends MapSprite{
 		// TODO Auto-generated method stub
 		//check for key press
 		//movement cd timer
-		if(System.currentTimeMillis()-lastMoveTimer>moveCd && isControllable){
+		if(System.currentTimeMillis() - lastMoveTimer >= moveCooldown && isControllable){
 			if(Game.keyhandler.isKeyDown("W")){
 				if(facing == "back"){
 					moveUp();

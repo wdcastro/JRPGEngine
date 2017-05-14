@@ -5,12 +5,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import resources.FileReader;
+import resources.Item;
 
 public class PlayerData {
 //inventory, party, etc
-	static HashMap<String, Integer> inventory = new HashMap<String, Integer>();
-	static HashMap<String, Boolean> flags = new HashMap<String, Boolean>();
-	static ArrayList<Character> party = new ArrayList<Character>();
+	public static HashMap<Item, Integer> inventory = new HashMap<Item, Integer>();
+	public static HashMap<String, Boolean> flags = new HashMap<String, Boolean>();
+	public static ArrayList<Character> party = new ArrayList<Character>();
 	
 	static String flagsDefault = "res/defaults/flags.txt";
 	
