@@ -24,7 +24,7 @@ public class ImageResourceManager {
 	}
 	
 	public static void loadResourcesFromFile(){
-		filenames.put("MAIN_MENU_BG", new SpriteInfo("res/background/background.png", 0, 0, 1280, 720));
+		filenames.put("MAIN_MENU_BG", new SpriteInfo("res/background/background.jpg", 0, 0, 1280, 720));
 		filenames.put("CHIBI_DRAGOON", new SpriteInfo("res/misc/dragoon chibi.png", 0, 0, 64, 64));
 
 		filenames.put("GHOST_GIRL", new SpriteInfo("res/character/ghost_girl_strip.png", 0, 0, 64, 64));
