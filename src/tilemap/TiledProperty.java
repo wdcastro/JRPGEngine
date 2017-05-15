@@ -19,28 +19,8 @@ public class TiledProperty {
 		}
 	}
 	
-	public Object getValue(){
-		switch(type){
-		case "string":
-			return value;
-		case "bool":
-			if(value == "true"){
-				return true;
-			} else {
-				return false;
-			}
-		case "int":
-			return Integer.parseInt(value);
-		case "float":
-			return Float.parseFloat(value);
-		case "color":
-			return value;
-		case "file":
-			return value;
-		default:
-			return null;			
-			
-		}
+	public String getValue(){
+		return value;
 	}
 
 }

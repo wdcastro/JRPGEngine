@@ -1,10 +1,9 @@
 package ui;
 
-import gamecomponents.Game;
-
 import java.io.File;
 import java.util.ArrayDeque;
 
+import core.Game;
 import resources.ImageResourceManager;
 import resources.StyleSheetResourceManager;
 import javafx.event.EventHandler;
@@ -99,10 +98,16 @@ public class DialogBox extends HBox{
 	}
 	
 	private void setSpeaker(Image image, String name){
-		portrait.setImage(image);
-		portraitBox.getChildren().remove(portrait);
-		portraitBox.getChildren().add(portrait);
-		nameplate.setText(name);
+		getChildren().clear();
+		if(image != null){
+			portrait.setImage(image);
+			portraitBox.getChildren().remove(portrait);
+			portraitBox.getChildren().add(portrait);
+			nameplate.setText(name);
+			getChildren().add(portraitBox);
+		}
+		getChildren().add(textDisplay);
+		
 	}
 	
 	private void hide(){
@@ -124,7 +129,7 @@ public class DialogBox extends HBox{
 		}
 	}
 	
-	public void say(String speaker, String portraitName, String content){
+	public void say(String content, String speaker, String portraitName){
 		setSpeaker(ImageResourceManager.getImage(portraitName), speaker);
 		setContent(content);
 		show();		

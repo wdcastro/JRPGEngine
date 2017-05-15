@@ -2,6 +2,8 @@ package world;
 
 import java.util.ArrayList;
 
+import audio.PlaylistManager;
+import core.Game;
 import menu.PauseMenu;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
@@ -11,7 +13,6 @@ import resources.MapResourceManager;
 import resources.TiledMapReader;
 import tilemap.Tile;
 import tilemap.TiledTileMap;
-import gamecomponents.Game;
 import graphics.Screen;
 import graphics.SpriteInfo;
 
@@ -46,6 +47,7 @@ public class World extends Screen{
 		}
 		System.out.println("Camera co-ordinates: "+camera.left+", "+camera.up+", "+camera.width+", "+camera.height);
 		System.out.println("--------------------------------------------------");
+		
 	}
 	
 	@Override

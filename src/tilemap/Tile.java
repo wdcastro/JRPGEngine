@@ -3,6 +3,7 @@ package tilemap;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import misc.CommandExecutionManager;
 import parser.Element;
 
 public class Tile {
@@ -19,6 +20,7 @@ public class Tile {
 	boolean specialTile = false;
 	boolean animatedTile = false;
 	boolean hasObject = false;
+	boolean isVisible = true;
 	
 	public Tile(int id, String type, int tilesetIndex){
 		if(type == "data"){
@@ -125,7 +127,11 @@ public class Tile {
 
 	public void nearInteract() {
 		if(properties.containsKey("nearInteract")){
-			System.out.println(properties.get("nearInteract").getValue());
+			CommandExecutionManager.execute(properties.get("nearInteract").getValue());
 		}
+	}
+	
+	public void setVisibility(boolean b){
+		isVisible = b;
 	}
 }

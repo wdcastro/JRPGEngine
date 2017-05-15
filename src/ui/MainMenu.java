@@ -1,12 +1,12 @@
 package ui;
 
-import gamecomponents.Game;
 import graphics.CGImage;
 import graphics.Drawable;
 import graphics.Screen;
 
 import java.util.ArrayList;
 
+import core.Game;
 import javafx.scene.input.MouseEvent;
 import resources.ImageResourceManager;
 

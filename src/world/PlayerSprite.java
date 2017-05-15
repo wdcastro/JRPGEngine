@@ -2,10 +2,10 @@ package world;
 
 import java.util.HashMap;
 
+import core.Game;
 import resources.ImageResourceManager;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import gamecomponents.Game;
 import graphics.MapSprite;
 import graphics.SpriteInfo;
 
@@ -96,7 +96,7 @@ public class PlayerSprite extends MapSprite{
 	}
 
 	@Override
-	public void playAnimation() {
+	public void playAnimation(String animation) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,1 +1,1 @@
-BUTTON_OK;; res/sound/buttonclick.mp3
+BUTTON_OK;; res/sound/correct.wav

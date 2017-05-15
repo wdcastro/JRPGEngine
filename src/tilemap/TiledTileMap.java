@@ -191,7 +191,8 @@ public class TiledTileMap extends Drawable{
 	
 	public boolean isCollidableAt(int index){
 		for (int i = 0; i<tilelayers.size(); i++){
-			if(tilelayers.get(i).data.get(index).properties.keySet().contains("COLLIDABLE")){
+			TiledProperty property = tilelayers.get(i).data.get(index).properties.get("COLLIDABLE");
+			if(property != null && property.getValue().equals("true")){
 				return true;
 			}
 		}

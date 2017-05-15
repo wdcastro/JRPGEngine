@@ -70,6 +70,7 @@
   <tile id="15">
    <properties>
     <property name="COLLIDABLE" type="bool" value="true"/>
+    <property name="nearInteract" value="say;It's locked...;"/>
    </properties>
   </tile>
   <tile id="16">

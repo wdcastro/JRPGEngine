@@ -5,13 +5,14 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import core.Game;
 import javafx.animation.AnimationTimer;
 import javafx.scene.input.MouseEvent;
 import resources.FileReader;
+import resources.InventoryResourceManager;
 import world.Camera;
 import world.NPC;
 import world.World;
-import gamecomponents.Game;
 import graphics.Screen;
 import graphics.SpriteInfo;
 
@@ -68,6 +69,7 @@ public class Cutscene extends Screen{
 							commands[5].trim()));
 					break;
 				case "item":
+					InventoryResourceManager.addToInventory(commands[1].trim(), Integer.parseInt(commands[2].trim()));
 					break;
 				case "action":
 					break;

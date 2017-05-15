@@ -4,4 +4,3 @@ Items
 Craft
 Save
 Load
-Exit

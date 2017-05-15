@@ -1,8 +1,9 @@
 package resources;
 
-import gamecomponents.PlayerData;
-
 import java.util.HashMap;
+
+import world.Item;
+import core.PlayerData;
 
 public class InventoryResourceManager {
 	static HashMap<String, Item> items = new HashMap<String, Item>();

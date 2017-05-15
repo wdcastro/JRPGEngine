@@ -41,22 +41,12 @@ public class NPC extends MapSprite implements Interactable{
 
 	@Override
 	public void nearInteract() {
-		CommandExecutionManager.execute(
-				"say"+";"+
-				npcname+";"+
-				portraitName+";"+
-				nearComment
-				);
+		CommandExecutionManager.execute("say;"+nearComment+";"+npcname+";"+portraitName);
 	}
 
 	@Override
 	public void farInteract() {
-		CommandExecutionManager.execute(
-				"say"+";"+
-				npcname+";"+
-				""+";"+
-				farComment
-				);
+		CommandExecutionManager.execute("say;"+farComment+";"+npcname+";"+portraitName);
 	}
 	
 	public void update(){
@@ -87,7 +77,7 @@ public class NPC extends MapSprite implements Interactable{
 	}
 
 	@Override
-	public void playAnimation() {
+	public void playAnimation(String animation) {
 		// TODO Auto-generated method stub
 		
 	}

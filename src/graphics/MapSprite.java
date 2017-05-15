@@ -12,7 +12,7 @@ public abstract class MapSprite extends Drawable {
 	//some form of behaviour
 	
 	public abstract void init();
-	public abstract void playAnimation();
+	public abstract void playAnimation(String animation);
 	public abstract void update();
 	public abstract void draw(GraphicsContext gc);
 	

@@ -75,6 +75,9 @@ public class TiledTileLayer{
 			if(currentTile.gid == -1){
 				continue;
 			}
+			if(!currentTile.isVisible){
+				continue;
+			}
 			TiledTileSet currentTileset = tilesets.get(currentTile.tilesetIndex);
 			if(i%map.width >= (camera.left+camera.width)){
 				continue;

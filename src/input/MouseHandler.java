@@ -1,6 +1,6 @@
 package input;
 
-import gamecomponents.Game;
+import core.Game;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 

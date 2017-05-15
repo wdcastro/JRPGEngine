@@ -1,10 +1,9 @@
 package graphics;
 
-import gamecomponents.Game;
-import gamecomponents.GameStage;
-
 import java.util.ArrayList;
 
+import core.Game;
+import core.GameStage;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
