@@ -20,6 +20,6 @@ Credits for free files:
 Images - all drawn by me
 
 Sound files:
-Kwartet Japonski - Maciej Zolnowski
-Field Force - sawsquarenoise
-Game Sound Correct - bertrof
+-Kwartet Japonski - Maciej Zolnowski
+-Field Force - sawsquarenoise
+-Game Sound Correct - bertrof
