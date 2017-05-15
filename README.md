@@ -13,4 +13,13 @@ Features:
 There's only a bare minimum of code so that it can be used as a template for other games. There's not much functionality added and can be converted into a Platformer or Hack n Slash quite comfortably.
 No documentation available as of yet but I'll try to respond if you email me: william.i.dcastro@gmail.com
 
+
 GLHF
+
+Credits for free files:
+Images - all drawn by me
+
+Sound files:
+Kwartet Japonski - Maciej Zolnowski
+Field Force - sawsquarenoise
+Game Sound Correct - bertrof
