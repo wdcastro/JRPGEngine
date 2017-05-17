@@ -18,7 +18,7 @@ public class Camera {
 		this.width = width;
 		this.height = height;
 	}
-	
+
 	public void moveUp(){// check for player screen lock
 		if(up>0 && world.player.y<=up+(height/2)){
 			up--;

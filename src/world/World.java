@@ -14,7 +14,6 @@ import resources.TiledMapReader;
 import tilemap.Tile;
 import tilemap.TiledTileMap;
 import graphics.Screen;
-import graphics.SpriteInfo;
 
 public class World extends Screen{
 	
@@ -144,6 +143,14 @@ public class World extends Screen{
 			this.camera = camera;
 		}
 	}
+	
+	public void centerCamera(NPC npc) {
+		if(camera == null){
+			this.camera = new Camera(this, 0, 0, Game.SCREEN_WIDTH/map.tilewidth, Game.SCREEN_HEIGHT/map.tileheight);
+		}
+		this.camera.centerOn(npc.x, npc.y);
+		
+	}
 
 	@Override
 	public String getScreenType() {
@@ -179,5 +186,7 @@ public class World extends Screen{
 		
 		
 	}
+
+	
 	
 }

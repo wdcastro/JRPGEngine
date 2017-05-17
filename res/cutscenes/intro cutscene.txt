@@ -1,23 +1,27 @@
 #####
 # World
 #####
-map; TEST_CITY
-camera; default
+map; MANSION
+#camera; default
+#camera; center; player
+#camera; center; elder1
+#elder1 has to be previously defined which it isn't here. 
 #camera; 0; 0; 20; 12
 
 #####
 # NPCS 
 # Usage
-# npc; x; y; nearInteract; farInteract; spriteName; name;
+# npc; x; y; nearInteract; farInteract; spriteName; npcname; refname;
 #####
 # npc - tells us to assign a new npc
 # x; y - where to spawn
 # nearInteract - not used in cutscenes
 # farInteract - not used in cutscenes
 # spriteName - for loading from ImageResourceLoader
-# name - for reference in the story
+# npcname - for display in the dialog box
+# refname - for reference in the npclist
 #####
-npc; 10; 10;;;CHIBI_DRAGOON; elder1
+npc; 20; 20;;;CHIBI_DRAGOON; Elder; elder1
 
 #####
 # Story
@@ -30,10 +34,20 @@ npc; 10; 10;;;CHIBI_DRAGOON; elder1
 # command - animation or dialog
 # item name - item defined in items section in resources file (external file)
 # flag name - name for flag defined in flags resource file (external file)
+# delay - delay to pause after action
 #####
-action; elder1; moveLeft
-action; elder1; moveLeft
-dialog; elder1; YAHARRO
+moveCamera; elder1
+action; elder1; moveLeft; 500
+action; elder1; moveLeft; 500
+action; elder1; moveRight; 250
+action; elder1; moveRight; 250
+action; elder1; moveUp; 100
+action; elder1; moveUp; 100
+action; elder1; moveUp; 100
+dialog; elder1; YAHARRO; CHIBI_DRAGOON
 dialog; elder1; I was starting to get lonely without anyone here
 item; potion; 1
-flag; intro; true
+flag; intro cutscene; true
+moveCamera; player
+action; player; moveDown; 500
+action; player; moveDown; 500

@@ -8,6 +8,9 @@ public class BGMPlayer extends Thread{
 	static MediaPlayer mediaplayer = null;
 	
 	public static void setSong(Media media){
+		if(mediaplayer!=null){
+			mediaplayer.stop();
+		}
 		mediaplayer = new MediaPlayer(media);
 		mediaplayer.setAutoPlay(true);
 		mediaplayer.setOnEndOfMedia(new Runnable(){

@@ -16,9 +16,7 @@ public class CGImage extends Drawable{
 
 	@Override
 	public void draw(GraphicsContext gc) {
-		gc.drawImage(sprite, x, y, width, height);
+		gc.drawImage(sprite, x, y, width, height);		
 	}
-	
-	
 
 }

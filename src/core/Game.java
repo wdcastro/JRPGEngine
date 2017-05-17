@@ -4,6 +4,7 @@ import input.KeyHandler;
 import input.MouseHandler;
 import resources.AudioResourceManager;
 import resources.ImageResourceManager;
+import resources.InventoryResourceManager;
 import resources.MapResourceManager;
 import resources.StyleSheetResourceManager;
 import resources.TextResourceManager;
@@ -110,6 +111,10 @@ public class Game extends Application{
 		System.out.println("Music loading started...");
 		AudioResourceManager.loadResourcesFromFile();
 		System.out.println("Music loading complete");
+		
+		System.out.println("Inventory loading started...");
+		InventoryResourceManager.loadResourcesFromFile();
+		System.out.println("Inventory loading complete");
 		
 		dialogbox = new DialogBox();
 		

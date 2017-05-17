@@ -12,7 +12,6 @@ import graphics.Screen;
 import resources.FileReader;
 import resources.StyleSheetResourceManager;
 import resources.TextResourceManager;
-import ui.MainMenu;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;

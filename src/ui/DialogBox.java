@@ -111,6 +111,7 @@ public class DialogBox extends HBox{
 	}
 	
 	private void hide(){
+		isShowing = false;
 		setSpeaker(null, "");
 		getStyleClass().clear();
 		getStyleClass().add("hidden");

@@ -7,11 +7,9 @@ import resources.ImageResourceManager;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import graphics.MapSprite;
-import graphics.SpriteInfo;
 
 public class PlayerSprite extends MapSprite{
 	
-	SpriteInfo spriteinfo;
 	HashMap<String, Integer[]> animations = new HashMap<String, Integer[]>();
 	Integer[] currentAnimation;
 	int currentFrame = 0;
@@ -48,8 +46,7 @@ public class PlayerSprite extends MapSprite{
 		animations.put("front", front);
 		animations.put("right", right);
 		animations.put("left", left);
-		animations.put("back", back);
-		
+		animations.put("back", back);	
 	}
 	
 	public void setControllable(boolean control){
@@ -168,6 +165,8 @@ public class PlayerSprite extends MapSprite{
 					}
 				}
 				
+			} else if(Game.keyhandler.isKeyDown("X")){
+				int i = 0;
 			} else {
 				switch(facing){
 				case "front":
@@ -201,6 +200,26 @@ public class PlayerSprite extends MapSprite{
 		}
 		
 		gc.drawImage(sprite,currentAnimation[currentFrame]*64,0,64,64, (x-world.camera.left)*world.map.tilewidth, (y-world.camera.up)*world.map.tileheight, 64, 64);
+		
+	}
+
+	public void doAction(String action) {
+		switch(action){
+		case "moveUp":
+			moveUp();
+			break;
+		case "moveDown":
+			moveDown();
+			break;
+		case "moveLeft":
+			moveLeft();
+			break;
+		case "moveRight":
+			moveRight();
+			break;
+		default:
+			System.err.println(action+" is not a valid action but the Player is trying their best to do it anyway");
+		}
 		
 	}
 

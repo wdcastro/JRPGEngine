@@ -10,8 +10,10 @@ public class PlaylistManager {
 	static boolean isLooping = true;
 	
 	public static void loadPlaylist(ArrayList<String> newPlaylist){
+		//TODO: load from file
 		playlist.clear();
 		playlist.addAll(newPlaylist);
+		currentSong = 0;
 		isLooping = true;
 		BGMPlayer.setSong(AudioResourceManager.getSong(playlist.get(currentSong)));
 	}

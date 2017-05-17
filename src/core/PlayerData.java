@@ -45,6 +45,16 @@ public class PlayerData {
 				
 	}
 	
+	public static boolean checkFlag(String flag){
+		if(flags.containsKey(flag)){
+			return flags.get(flag);
+		} else {
+			System.err.println("PlayerData: checkFlag: Missing flag: "+flag);
+			System.exit(1);
+			return false;
+		}
+	}
+	
 	private void loadParty(String property){
 		if(property == "default"){
 			
