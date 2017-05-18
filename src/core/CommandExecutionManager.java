@@ -1,7 +1,5 @@
-package misc;
+package core;
 
-import core.Game;
-import core.PlayerData;
 import resources.InventoryResourceManager;
 
 public class CommandExecutionManager {

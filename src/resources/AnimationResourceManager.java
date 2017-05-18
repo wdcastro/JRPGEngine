@@ -4,7 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Hashtable;
 
-public class SpriteDataResourceManager {
+public class AnimationResourceManager {
 	public final static String resourceLocation = "res/resourcemanagerfiles/ANIMATIONS.resource";
 	static Hashtable<String, String> animations = new Hashtable<String, String>();
 	

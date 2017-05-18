@@ -2,10 +2,10 @@ package gamecomponents;
 
 import java.util.ArrayList;
 
-import storytelling.Cutscene;
+import screens.Cutscene;
+import screens.World;
 import core.GameStage;
 import core.PlayerData;
-import world.World;
 import audio.PlaylistManager;
 
 public class GameLogic {

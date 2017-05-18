@@ -1,4 +1,4 @@
-package world;
+package screens;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -15,6 +15,9 @@ import resources.MapResourceManager;
 import resources.TiledMapReader;
 import tilemap.Tile;
 import tilemap.TiledTileMap;
+import world.Camera;
+import world.NPC;
+import world.PlayerSprite;
 import graphics.Screen;
 
 public class World extends Screen{
@@ -29,7 +32,7 @@ public class World extends Screen{
 	boolean enterDown = false;
 	PauseMenu pausemenu = new PauseMenu();
 
-	Camera camera;
+	public Camera camera;
 	public ArrayList<NPC> npcs = new ArrayList<NPC>();
 	
 	public World(String mapname, String worlddata){

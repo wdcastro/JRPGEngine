@@ -1,4 +1,4 @@
-package storytelling;
+package screens;
 
 
 import java.io.UnsupportedEncodingException;
@@ -13,7 +13,6 @@ import resources.FileReader;
 import resources.InventoryResourceManager;
 import world.Camera;
 import world.NPC;
-import world.World;
 import gamecomponents.GameLogic;
 import graphics.Screen;
 

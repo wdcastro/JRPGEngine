@@ -6,7 +6,7 @@ import resources.AudioResourceManager;
 import resources.ImageResourceManager;
 import resources.InventoryResourceManager;
 import resources.MapResourceManager;
-import resources.SpriteDataResourceManager;
+import resources.AnimationResourceManager;
 import resources.StyleSheetResourceManager;
 import resources.TextResourceManager;
 import ui.DialogBox;
@@ -118,7 +118,7 @@ public class Game extends Application{
 		System.out.println("Inventory loading complete");
 		
 		System.out.println("Animations loading started...");
-		SpriteDataResourceManager.loadResourcesFromFile();
+		AnimationResourceManager.loadResourcesFromFile();
 		System.out.println("Animations loading complete");
 		
 		dialogbox = new DialogBox();
@@ -132,9 +132,7 @@ public class Game extends Application{
 		
 		stage.setScene(scene);
 		stage.show();
-		
-		
-		
+
 		scene.setOnKeyPressed(keyhandler);
 		scene.setOnKeyReleased(keyhandler);
 		scene.setOnMousePressed(mousehandler);

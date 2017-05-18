@@ -1,10 +1,10 @@
 package world;
 
+import core.CommandExecutionManager;
 import resources.ImageResourceManager;
+import screens.World;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import misc.CommandExecutionManager;
-import misc.Interactable;
 import graphics.MapSprite;
 
 public class NPC extends MapSprite implements Interactable{

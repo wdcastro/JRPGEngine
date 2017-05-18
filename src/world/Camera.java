@@ -1,5 +1,6 @@
 package world;
 
+import screens.World;
 import javafx.animation.AnimationTimer;
 
 public class Camera {

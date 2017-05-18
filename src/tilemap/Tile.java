@@ -3,7 +3,7 @@ package tilemap;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import misc.CommandExecutionManager;
+import core.CommandExecutionManager;
 import parser.Element;
 
 public class Tile {

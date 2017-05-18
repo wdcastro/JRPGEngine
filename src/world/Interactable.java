@@ -1,4 +1,4 @@
-package misc;
+package world;
 
 public interface Interactable {
 	

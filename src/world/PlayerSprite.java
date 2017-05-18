@@ -4,7 +4,8 @@ import java.util.HashMap;
 
 import core.Game;
 import resources.ImageResourceManager;
-import resources.SpriteDataResourceManager;
+import resources.AnimationResourceManager;
+import screens.World;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import graphics.MapSprite;
@@ -20,8 +21,8 @@ public class PlayerSprite extends MapSprite{
 	long lastFrameTimer = 0;
 	Image sprite;
 	World world;
-	int x;
-	int y;
+	public int x;
+	public int y;
 	double lastMoveTimer = System.currentTimeMillis();
 	float moveCooldown = 150;
 	boolean isControllable = true;
@@ -31,7 +32,7 @@ public class PlayerSprite extends MapSprite{
 		this.x = x;
 		this.y = y;
 		sprite = ImageResourceManager.getImage("GHOST_GIRL");
-		animations = SpriteDataResourceManager.getAnimations("PLAYER");
+		animations = AnimationResourceManager.getAnimations("PLAYER");
 		/*Integer[] idlefront = new Integer[]{0};
 		Integer[] idleright = new Integer[]{3};
 		Integer[] idleleft = new Integer[]{11};
