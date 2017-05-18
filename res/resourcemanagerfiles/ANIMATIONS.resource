@@ -1,0 +1,1 @@
+PLAYER;; res/animations/ghostgirl.anim

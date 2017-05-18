@@ -9,31 +9,42 @@ import world.World;
 import audio.PlaylistManager;
 
 public class GameLogic {
+	
 
 	public static void start(){
 		loadChapter(getCurrentChapter());
 	}
 	
 	public static void loadChapter(int chapter){
+		ArrayList<String> playlist = new ArrayList<String>();
 		System.out.println("Loading chapter "+ chapter);
 		System.out.println("-------------------------------");
 		switch(chapter){
 		case 0:
-			ArrayList<String> chap0playlist = new ArrayList<String>();
-			chap0playlist.add("JAPONSKI"); // maciej zolnowski
-			chap0playlist.add("FIELD_FORCE"); // sawsquarenoise
-			PlaylistManager.loadPlaylist(chap0playlist);
+			playlist.clear();
+			playlist.add("JAPONSKI"); 
+			playlist.add("FIELD_FORCE"); 
+			PlaylistManager.loadPlaylist(playlist);
 			
 			Cutscene cutscene = new Cutscene("res/cutscenes/intro cutscene.txt");
 			GameStage.setGameStage(cutscene);
 			cutscene.play();
 			break;
-		default:
-			ArrayList<String> playlist = new ArrayList<String>();
-			playlist.add("FIELD_FORCE"); // sawsquarenoise
+		case 1:
+			playlist.clear();
+			playlist.add("FIELD_FORCE"); 
 			PlaylistManager.loadPlaylist(playlist);
 			
-			World defaultWorld = new World("MANSION");
+			World chapter1map = new World("MANSION","res/world/CHAPTER1MANSION.txt");
+			
+			GameStage.setGameStage(chapter1map);
+			break;
+		default:
+			playlist.clear();
+			playlist.add("FIELD_FORCE"); 
+			PlaylistManager.loadPlaylist(playlist);
+			
+			World defaultWorld = new World("MANSION","res/world/CHAPTER1MANSION.txt");
 			GameStage.setGameStage(defaultWorld);
 			break;
 		}

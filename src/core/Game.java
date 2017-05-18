@@ -6,6 +6,7 @@ import resources.AudioResourceManager;
 import resources.ImageResourceManager;
 import resources.InventoryResourceManager;
 import resources.MapResourceManager;
+import resources.SpriteDataResourceManager;
 import resources.StyleSheetResourceManager;
 import resources.TextResourceManager;
 import ui.DialogBox;
@@ -115,6 +116,10 @@ public class Game extends Application{
 		System.out.println("Inventory loading started...");
 		InventoryResourceManager.loadResourcesFromFile();
 		System.out.println("Inventory loading complete");
+		
+		System.out.println("Animations loading started...");
+		SpriteDataResourceManager.loadResourcesFromFile();
+		System.out.println("Animations loading complete");
 		
 		dialogbox = new DialogBox();
 		

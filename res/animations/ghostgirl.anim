@@ -1,0 +1,8 @@
+idlefront(0)
+idleback(6)
+idleright(3)
+idleleft(11)
+front(1,0,2)
+right(4,3,5)
+back(7,6,8)
+left(9,11,10)

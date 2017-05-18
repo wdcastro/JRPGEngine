@@ -29,9 +29,12 @@ public class Cutscene extends Screen{
 	boolean isPlaying = false;
 	
 	public Cutscene(String path){
-		//load from file
-		//create cast ie npc list
-		String[] lines = loadCutscene(path);
+		loadCutscene(path);
+
+	}
+	
+	public void loadCutscene(String path){
+		String[] lines = parseCutsceneFile(path);
 
 		
 		for(int i = 0; i<lines.length; i++){
@@ -41,7 +44,7 @@ public class Cutscene extends Screen{
 				String[] commands = lines[i].split(";");
 				switch(commands[0].trim()){
 				case "map":
-					world = new World(commands[1].trim());
+					world = new World(commands[1].trim(), "");
 					break;
 				case "camera":
 					if(world == null){
@@ -92,15 +95,12 @@ public class Cutscene extends Screen{
 		world.loadNPCs(new ArrayList<NPC>(npcs.values()));
 		world.player.setControllable(false);
 		this.drawables.addAll(world.getDrawables());
-		System.out.println("-----------------SCRIPT----------------");
-		System.out.println(script);
-		System.out.println("----------------END SCRIPT---------------");
-		//create world
-		//load cast into world
-		//animate etc etc etc
+		//System.out.println("-----------------SCRIPT----------------");
+		//System.out.println(script);
+		//System.out.println("----------------END SCRIPT---------------");
 	}
 	
-	public String[] loadCutscene(String path){
+	public String[] parseCutsceneFile(String path){
 		byte[] bytes = FileReader.readBytesFromFile(path);
 		try {
 			String[] commands = new String(bytes, "UTF-8").split("\n");

@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import core.Game;
 import resources.ImageResourceManager;
+import resources.SpriteDataResourceManager;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import graphics.MapSprite;
@@ -30,15 +31,14 @@ public class PlayerSprite extends MapSprite{
 		this.x = x;
 		this.y = y;
 		sprite = ImageResourceManager.getImage("GHOST_GIRL");
-		Integer[] idlefront = new Integer[]{0};
-		Integer[] idleback = new Integer[]{6};
+		animations = SpriteDataResourceManager.getAnimations("PLAYER");
+		/*Integer[] idlefront = new Integer[]{0};
 		Integer[] idleright = new Integer[]{3};
 		Integer[] idleleft = new Integer[]{11};
 		Integer[] front = new Integer[]{1,0,2};
 		Integer[] right = new Integer[]{4,3,5};
 		Integer[] back = new Integer[]{7,6,8};
 		Integer[] left = new Integer[]{9,11,10};
-		currentAnimation = idlefront;
 		animations.put("idlefront", idlefront);
 		animations.put("idleback", idleback);
 		animations.put("idleleft", idleleft);
@@ -46,7 +46,9 @@ public class PlayerSprite extends MapSprite{
 		animations.put("front", front);
 		animations.put("right", right);
 		animations.put("left", left);
-		animations.put("back", back);	
+		animations.put("back", back);
+		*/
+		currentAnimation = animations.get("idlefront");
 	}
 	
 	public void setControllable(boolean control){
@@ -59,6 +61,9 @@ public class PlayerSprite extends MapSprite{
 			y--;
 			world.camera.moveUp();
 		}
+		if(currentAnimationName!="back"){
+			setAnimation("back");
+		}
 	}
 	
 	public void moveDown(){
@@ -66,6 +71,9 @@ public class PlayerSprite extends MapSprite{
 			//collision check
 			y++;
 			world.camera.moveDown();
+		}
+		if(currentAnimationName!="front"){
+			setAnimation("front");
 		}
 		
 	}
@@ -76,6 +84,9 @@ public class PlayerSprite extends MapSprite{
 			x--;
 			world.camera.moveLeft();
 		}
+		if(currentAnimationName!="left"){
+			setAnimation("left");
+		}
 	}
 	
 	public void moveRight(){
@@ -83,6 +94,9 @@ public class PlayerSprite extends MapSprite{
 			//collision check
 			x++;
 			world.camera.moveRight();
+		}
+		if(currentAnimationName!="right"){
+			setAnimation("right");
 		}
 	}
 
@@ -116,9 +130,7 @@ public class PlayerSprite extends MapSprite{
 			if(Game.keyhandler.isKeyDown("W")){
 				if(facing == "back"){
 					moveUp();
-					if(currentAnimationName!="back"){
-						setAnimation("back");
-					}
+					
 				} else {
 					facing = "back";
 					if(currentAnimationName!="idleback"){
@@ -129,9 +141,7 @@ public class PlayerSprite extends MapSprite{
 			} else if(Game.keyhandler.isKeyDown("S")){
 				if(facing == "front"){
 					moveDown();
-					if(currentAnimationName!="front"){
-						setAnimation("front");
-					}
+					
 				} else {
 					facing = "front";
 					if(currentAnimationName!="idlefront"){
@@ -142,9 +152,7 @@ public class PlayerSprite extends MapSprite{
 			} else if(Game.keyhandler.isKeyDown("D")){
 				if(facing == "right"){
 					moveRight();
-					if(currentAnimationName!="right"){
-						setAnimation("right");
-					}
+					
 				} else {
 					facing = "right";
 					if(currentAnimationName!="idleright"){
@@ -155,9 +163,7 @@ public class PlayerSprite extends MapSprite{
 			} else if(Game.keyhandler.isKeyDown("A")){
 				if(facing == "left"){
 					moveLeft();
-					if(currentAnimationName!="left"){
-						setAnimation("left");
-					}
+					
 				} else {
 					facing = "left";
 					if(currentAnimationName!="idleleft"){
@@ -165,8 +171,6 @@ public class PlayerSprite extends MapSprite{
 					}
 				}
 				
-			} else if(Game.keyhandler.isKeyDown("X")){
-				int i = 0;
 			} else {
 				switch(facing){
 				case "front":

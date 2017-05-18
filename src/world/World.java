@@ -1,5 +1,6 @@
 package world;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import audio.PlaylistManager;
@@ -9,6 +10,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import resources.FileReader;
 import resources.MapResourceManager;
 import resources.TiledMapReader;
 import tilemap.Tile;
@@ -30,25 +32,39 @@ public class World extends Screen{
 	Camera camera;
 	public ArrayList<NPC> npcs = new ArrayList<NPC>();
 	
-	public World(String mapname){
+	public World(String mapname, String worlddata){
 		player = new PlayerSprite(this, 17, 14);
 		double time = System.nanoTime();
-		System.out.println("World loading complete. Time taken : "+((System.nanoTime()-time)/Game.MILLIS_TO_NANOS)+" ms");
+		
 		TiledMapReader tmr = new TiledMapReader();
 		map = tmr.read(MapResourceManager.getMap(mapname));
 		if(map == null){
 			System.err.println("World(): Map returned null");
 			System.exit(1);
 		} else {
-			setCamera(null);
 			drawables.add(map);
-			drawables.add(player);
 		}
+		loadWorldData(worlddata);
+		drawables.add(player);
+		drawables.addAll(npcs);
+		setCamera(null);
 		System.out.println("Camera co-ordinates: "+camera.left+", "+camera.up+", "+camera.width+", "+camera.height);
+		System.out.println("World loading complete. Time taken : "+((System.nanoTime()-time)/Game.MILLIS_TO_NANOS)+" ms");
 		System.out.println("--------------------------------------------------");
 		
 	}
 	
+	private String[] loadWorld(String path) {
+		byte[] bytes = FileReader.readBytesFromFile(path);
+		try {
+			String[] commands = new String(bytes, "UTF-8").split("\n");
+			return commands;
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	@Override
 	public void update(){
 		map.update(camera);
@@ -58,6 +74,39 @@ public class World extends Screen{
 		}
 		
 		handleMenuKeys();
+	}
+	
+	private void loadWorldData(String path){
+		if(path.isEmpty()){
+			return;
+		}
+		String[] lines = loadWorld(path);
+		
+		for(int i = 0; i<lines.length; i++){
+			if(lines[i].startsWith("#")){
+				continue;
+			} else {
+				String[] commands = lines[i].split(";");
+				switch(commands[0].trim()){
+				case "player":
+					player = new PlayerSprite(this, Integer.parseInt(commands[1].trim()), Integer.parseInt(commands[2].trim()));
+					break;
+				case "npc":
+					//make new npc
+					npcs.add(new NPC(
+							this, 
+							Integer.parseInt(commands[1].trim()),
+							Integer.parseInt(commands[2].trim()),
+							commands[3].trim(),
+							commands[4].trim(),
+							commands[5].trim(), commands[6].trim()));
+					break;
+				default:
+					System.out.println("Unknown command: "+lines[i]);
+					break;
+				}
+			}
+		}
 	}
 
 	private void handleMenuKeys() {
@@ -118,6 +167,10 @@ public class World extends Screen{
 	public void loadNPCs(ArrayList<NPC> npcs){
 		this.npcs.addAll(npcs);
 		drawables.addAll(npcs);
+	}
+	
+	public void loadNPCs(String path){
+		
 	}
 	
 	public boolean isCollidableAt(int x, int y){

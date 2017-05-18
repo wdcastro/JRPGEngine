@@ -1,0 +1,2 @@
+player; 17; 14
+npc; 18; 15; YAHARRO; HELLO WORLD; CHIBI_DRAGOON; Elder

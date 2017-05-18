@@ -50,4 +50,4 @@ item; potion; 1
 flag; intro cutscene; true
 moveCamera; player
 action; player; moveDown; 500
-action; player; moveDown; 500
+action; player; moveDown; 500	
