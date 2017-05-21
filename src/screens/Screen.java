@@ -1,4 +1,6 @@
-package graphics;
+package screens;
+
+import graphics.Drawable;
 
 import java.util.ArrayList;
 
@@ -17,5 +19,7 @@ public abstract class Screen {
 	public abstract void update();
 
 	public abstract void handleMousePress(MouseEvent e);
+	
+	public abstract void hide();
 	
 }

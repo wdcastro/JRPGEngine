@@ -3,9 +3,10 @@ package core;
 
 
 
+import menu.MainMenu;
+import screens.Screen;
 import gamecomponents.GameLogic;
 import graphics.DrawingThread;
-import graphics.Screen;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
@@ -25,7 +26,7 @@ public class GameStage {
 
 		PlayerData.loadDefaults();
 		drawingthread = new DrawingThread(canvas.getGraphicsContext2D(), this);
-		//Screen screen = new MainMenu();
+		MainMenu menu = new MainMenu();
 		//Screen screen = new Cutscene("res/cutscenes/intro cutscene.txt");
 		updateLoop = new AnimationTimer(){
 
@@ -38,7 +39,8 @@ public class GameStage {
 		};
 		updateLoop.start();
 		drawingthread.start();
-		GameLogic.start();
+		//GameLogic.start();
+		setGameStage(menu);
 		System.out.println("DrawingThread started");
 		
 		
@@ -54,6 +56,9 @@ public class GameStage {
 	
 	public static void setGameStage(Screen s){
 		//TODO: render css
+		if(currentScreen != null){
+			currentScreen.hide();
+		}
 		prevScreen = currentScreen;
 		currentScreen = s;
 		System.out.println("Game stage set to "+ s.getScreenType());

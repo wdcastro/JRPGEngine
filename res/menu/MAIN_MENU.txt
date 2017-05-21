@@ -1,0 +1,4 @@
+New Game
+Load Game
+Settings
+Exit

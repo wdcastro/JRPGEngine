@@ -14,7 +14,6 @@ import resources.InventoryResourceManager;
 import world.Camera;
 import world.NPC;
 import gamecomponents.GameLogic;
-import graphics.Screen;
 
 public class Cutscene extends Screen{
 	
@@ -237,5 +236,11 @@ public class Cutscene extends Screen{
 			}
 			
 		}.start();
+	}
+
+	@Override
+	public void hide() {
+		// TODO Auto-generated method stub
+		
 	}
 }

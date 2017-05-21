@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 import core.Game;
 import audio.SFXPlayer;
-import graphics.Screen;
 import resources.FileReader;
 import resources.StyleSheetResourceManager;
 import resources.TextResourceManager;
+import screens.Screen;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
@@ -19,11 +19,7 @@ import javafx.scene.layout.VBox;
 
 public class PauseMenu extends VBox{
 
-	private int currentlySelected = 0;
 	String menufile = "res/menu/PAUSE_MENU.txt";
-	ArrayList<Button> buttons = new ArrayList<Button>();
-
-	Screen screen = new MainMenu();
 	
 	public PauseMenu(){
 		getStylesheets().add(new File(StyleSheetResourceManager.getStyleSheet("PAUSE_MENU")).toURI().toString());
@@ -40,7 +36,6 @@ public class PauseMenu extends VBox{
 		switch(menuname.trim().toUpperCase()){
 		case "PARTY":
 			//do something //creating duplicate screens but its ok
-			Game.gamestage.setGameStage(screen);
 			break;
 		default:
 			System.out.println(menuname);
@@ -63,7 +58,6 @@ public class PauseMenu extends VBox{
 					}
 					
 				});
-				buttons.add(button);
 				getChildren().add(button);
 			}
 		} catch (UnsupportedEncodingException e) {

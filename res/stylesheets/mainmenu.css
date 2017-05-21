@@ -1,6 +1,14 @@
 .button{
--fx-opacity: 0.5;
--fx-background-color: #000000;
+-fx-text-fill: #ffffff;
+-fx-background-color:transparent;
+-fx-font-size:20px;
+}
+
+.button:hover{
+
+-fx-text-fill: #ff0077;
+-fx-background-color:#ffffff;
+-fx-font-size:20px;
 }
 
 .moveselectbox{

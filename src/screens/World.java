@@ -18,7 +18,6 @@ import tilemap.TiledTileMap;
 import world.Camera;
 import world.NPC;
 import world.PlayerSprite;
-import graphics.Screen;
 
 public class World extends Screen{
 	
@@ -121,10 +120,8 @@ public class World extends Screen{
 			if(inMenu){
 				//hide menu
 				Game.root.getChildren().remove(pausemenu);
-				System.out.println("menu closed");
 			} else {
 				Game.root.getChildren().add(pausemenu);
-				System.out.println("menu open");
 			}
 			inMenu = !inMenu;
 			enterDown = false;
@@ -240,6 +237,12 @@ public class World extends Screen{
 			}
 		}
 		
+		
+	}
+
+	@Override
+	public void hide() {
+		// TODO Auto-generated method stub
 		
 	}
 
