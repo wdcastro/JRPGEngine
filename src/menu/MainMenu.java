@@ -21,8 +21,8 @@ import resources.StyleSheetResourceManager;
 import screens.Screen;
 
 public class MainMenu extends Screen {
-	public String background = "MAIN_MENU_BG";
-	public String menufile = "res/menu/MAIN_MENU.txt";
+	public String background = "background.jpg";
+	public String menufile = "res/en/menu/MAIN_MENU.txt";
 	VBox menuBox = null;
 	//css
 	
@@ -54,7 +54,7 @@ public class MainMenu extends Screen {
 		VBox menu = new VBox();
 		menu.setMinWidth(Game.SCREEN_WIDTH);
 		menu.setMinHeight(Game.SCREEN_HEIGHT);
-		menu.getStylesheets().add(new File(StyleSheetResourceManager.getStyleSheet("MAIN_MENU")).toURI().toString());
+		menu.getStylesheets().add(new File(StyleSheetResourceManager.getStyleSheet("mainmenu.css")).toURI().toString());
 		menu.setSpacing(20);
 		menu.setAlignment(Pos.CENTER);
 		loadMenu(menu);

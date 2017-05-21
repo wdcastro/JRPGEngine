@@ -7,7 +7,6 @@ import java.util.HashMap;
 import javafx.scene.media.Media;
 
 public class AudioResourceManager {
-	public final static String resourceLocation = "res/resourcemanagerfiles/MUSIC.resource";
 	static HashMap<String, String> songs = new HashMap<String, String>();
 	
 	public static Media getSong(String name){
@@ -20,19 +19,11 @@ public class AudioResourceManager {
 	}
 	
 	public static void loadResourcesFromFile(){
-		try {
-			byte[] bytes = FileReader.readBytesFromFile(resourceLocation);
-			String[] lines = new String(bytes, "UTF-8").split("\n");
-			for(int i = 0; i<lines.length; i++){
-				String[] currentLine = lines[i].trim().split(";;");
-				if(currentLine[0].startsWith("#")){
-					continue;
-				} else {
-					songs.put(currentLine[0].trim(), currentLine[1].trim());
-				}
-			}
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+		File file = new File("res/music");
+		File[] dirlist = file.listFiles();
+		for(int i = 0; i < dirlist.length; i++){
+			songs.put(dirlist[i].getName(), dirlist[i].getPath());
+			System.out.println(dirlist[i].getName()+", "+songs.get(dirlist[i].getName()));
 		}
 	}
 

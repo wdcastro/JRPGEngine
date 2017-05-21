@@ -8,7 +8,7 @@ import core.Game;
 import core.PlayerData;
 
 public class InventoryResourceManager {
-	public final static String resourceLocation = "res/resourcemanagerfiles/ITEMS.resource";
+	public final static String resourceLocation = "res/en/ITEMS.resource";
 	static HashMap<String, Item> items = new HashMap<String, Item>();
 	
 	public static void addToInventory(String name, Integer quantity){

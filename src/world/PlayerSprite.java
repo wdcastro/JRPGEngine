@@ -31,8 +31,8 @@ public class PlayerSprite extends MapSprite{
 		this.world = world;
 		this.x = x;
 		this.y = y;
-		sprite = ImageResourceManager.getImage("GHOST_GIRL");
-		animations = AnimationResourceManager.getAnimations("PLAYER");
+		sprite = ImageResourceManager.getImage("ghost_girl_strip.png");
+		animations = AnimationResourceManager.getAnimations("ghostgirl.anim");
 		/*Integer[] idlefront = new Integer[]{0};
 		Integer[] idleright = new Integer[]{3};
 		Integer[] idleleft = new Integer[]{11};

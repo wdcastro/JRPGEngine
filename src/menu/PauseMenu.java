@@ -19,10 +19,10 @@ import javafx.scene.layout.VBox;
 
 public class PauseMenu extends VBox{
 
-	String menufile = "res/menu/PAUSE_MENU.txt";
+	String menufile = "res/en/menu/PAUSE_MENU.txt";
 	
 	public PauseMenu(){
-		getStylesheets().add(new File(StyleSheetResourceManager.getStyleSheet("PAUSE_MENU")).toURI().toString());
+		getStylesheets().add(new File(StyleSheetResourceManager.getStyleSheet("pausemenu.css")).toURI().toString());
 		setMinHeight(Game.SCREEN_HEIGHT);
 		setMinWidth(Game.SCREEN_WIDTH*0.20);
 		setSpacing(Game.SCREEN_HEIGHT/12);

@@ -16,32 +16,33 @@ public class GameLogic {
 	}
 	
 	public static void loadChapter(int chapter){
+		System.out.println("GameLogic:loadChapter");
 		ArrayList<String> playlist = new ArrayList<String>();
 		System.out.println("Loading chapter "+ chapter);
 		System.out.println("-------------------------------");
 		switch(chapter){
 		case 0:
 			playlist.clear();
-			playlist.add("JAPONSKI"); 
-			playlist.add("FIELD_FORCE"); 
+			playlist.add("kwartetjaponski.mp3"); 
+			playlist.add("fieldforce.mp3"); 
 			PlaylistManager.loadPlaylist(playlist);
 			
-			Cutscene cutscene = new Cutscene("res/cutscenes/intro cutscene.txt");
+			Cutscene cutscene = new Cutscene("res/en/cutscenes/intro cutscene.txt");
 			GameStage.setGameStage(cutscene);
 			cutscene.play();
 			break;
 		case 1:
 			playlist.clear();
-			playlist.add("FIELD_FORCE"); 
+			playlist.add("fieldforce.mp3"); 
 			PlaylistManager.loadPlaylist(playlist);
 			
-			World chapter1map = new World("MANSION","res/world/CHAPTER1MANSION.txt");
+			World chapter1map = new World("mansion.tmx","res/en/world/CHAPTER1MANSION.txt");
 			
 			GameStage.setGameStage(chapter1map);
 			break;
 		default:
 			playlist.clear();
-			playlist.add("FIELD_FORCE"); 
+			playlist.add("fieldforce.mp3"); 
 			PlaylistManager.loadPlaylist(playlist);
 			
 			World defaultWorld = new World("MANSION","res/world/CHAPTER1MANSION.txt");

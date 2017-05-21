@@ -89,10 +89,12 @@ public class Game extends Application{
 	            }
 		    }
 		}.start();
+		
+		
 		System.out.println("Image Resource loading started...");
 		ImageResourceManager.loadResourcesFromFile();
 		System.out.println("Image Resource loading complete");
-		
+
 		System.out.println("Text Resource loading started...");
 		TextResourceManager.loadResourcesFromFile();
 		System.out.println("Text Resource loading complete");
@@ -101,25 +103,41 @@ public class Game extends Application{
 		MapResourceManager.loadResourcesFromFile();
 		System.out.println("Map Resource loading complete");
 		
+		
 		System.out.println("CSS Resource loading started...");
 		StyleSheetResourceManager.loadResourcesFromFile();
 		System.out.println("CSS Resource loading complete");
+		
+		System.out.println("-------------------");
+		
 		
 		System.out.println("SFX loading started...");
 		SFXPlayer.loadResourcesFromFile();
 		System.out.println("SFX loading complete");
 		
+
+		System.out.println("-------------------");
+		
 		System.out.println("Music loading started...");
 		AudioResourceManager.loadResourcesFromFile();
 		System.out.println("Music loading complete");
+		
+
+		System.out.println("-------------------");
 		
 		System.out.println("Inventory loading started...");
 		InventoryResourceManager.loadResourcesFromFile();
 		System.out.println("Inventory loading complete");
 		
+
+		System.out.println("-------------------");
+		
 		System.out.println("Animations loading started...");
 		AnimationResourceManager.loadResourcesFromFile();
 		System.out.println("Animations loading complete");
+		
+
+		System.out.println("-------------------");
 		
 		dialogbox = new DialogBox();
 		

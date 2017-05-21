@@ -1,5 +1,6 @@
 package resources;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.Hashtable;
 
@@ -18,19 +19,15 @@ public class MapResourceManager {
 	}
 	
 	public static void loadResourcesFromFile(){
-		try {
-			byte[] bytes = FileReader.readBytesFromFile(resourceLocation);
-			String[] lines = new String(bytes, "UTF-8").split("\n");
-			for(int i = 0; i<lines.length; i++){
-				String[] currentLine = lines[i].trim().split(";;");
-				if(currentLine[0].startsWith("#")){
-					continue;
-				} else {
-					mapnames.put(currentLine[0].trim(), currentLine[1].trim());
-				}
+		File file = new File("res/mapdata");
+		File[] dirlist = file.listFiles();
+		for(int i = 0; i < dirlist.length; i++){
+			String filename = dirlist[i].getName();
+			String ext = filename.substring(filename.lastIndexOf("."),filename.length());
+			if(ext.equals(".tmx")){
+				mapnames.put(filename, dirlist[i].getPath());
+				System.out.println(filename+", "+mapnames.get(filename));
 			}
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
 		}
 	}
 

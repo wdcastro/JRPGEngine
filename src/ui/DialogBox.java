@@ -38,7 +38,7 @@ public class DialogBox extends HBox{
 	boolean isTyping = false;
 	
 	public DialogBox(){
-		getStylesheets().add(new File(StyleSheetResourceManager.getStyleSheet("DIALOG_BOX")).toURI().toString());	 
+		getStylesheets().add(new File(StyleSheetResourceManager.getStyleSheet("dialogbox.css")).toURI().toString());	 
 		setMinHeight(Game.SCREEN_HEIGHT*0.25);
 		setMinWidth(Game.SCREEN_WIDTH*0.90);
 		setLayoutX(Game.SCREEN_WIDTH*0.05);

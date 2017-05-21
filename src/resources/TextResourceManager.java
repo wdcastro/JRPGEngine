@@ -5,7 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 
 public class TextResourceManager {
-	public final static String resourceLocation = "res/resourcemanagerfiles/ENG_TEXT.resource";
+	public final static String resourceLocation = "res/en/STRINGS.resource";
 	public static HashMap<String, String> texts = new HashMap<String, String>();
 	
 	public static void loadResourcesFromFile(){
