@@ -11,10 +11,6 @@ public class CommandExecutionManager {
 		}
 		switch(commands[0]){
 		case "say":
-			System.out.println(commands.length);
-			for(int i = 0; i<commands.length; i++){
-				System.out.println(commands[i]);
-			}
 			if(commands.length == 4){
 				Game.dialogbox.say(commands[1].trim(), commands[2].trim(), commands[3].trim());
 			} else if (commands.length == 3){

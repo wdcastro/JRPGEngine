@@ -53,7 +53,7 @@ public class PauseMenu extends VBox{
 
 					@Override
 					public void handle(MouseEvent e) {
-						SFXPlayer.playSound("BUTTON_OK");
+						SFXPlayer.playSound("correct.wav");
 						openMenu(button.getText());
 					}
 					

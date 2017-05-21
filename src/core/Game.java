@@ -13,6 +13,7 @@ import ui.DialogBox;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -20,13 +21,14 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 
 public class Game extends Application{
 	
-	public static final int SCREEN_WIDTH = 1280;
-	public static final int SCREEN_HEIGHT = 720;
+	public static int SCREEN_WIDTH = 1280;
+	public static int SCREEN_HEIGHT = 720;
 	
 	public static long delta_time = 0;
 	public static long last_time = System.nanoTime();
@@ -50,6 +52,23 @@ public class Game extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
 		
+		Settings.loadSettings();
+
+		Rectangle2D primaryScreenBounds = Screen.getPrimary().getBounds();
+		switch(Settings.windowtype){
+		case "WINDOWED":
+			SCREEN_WIDTH = Settings.width;
+			SCREEN_HEIGHT = Settings.height;
+			break;
+		case "FULLSCREEN":
+			SCREEN_WIDTH = (int) primaryScreenBounds.getWidth();
+			SCREEN_HEIGHT = (int) primaryScreenBounds.getHeight();
+			stage.setFullScreen(true);
+			break;
+		default:
+			System.err.println("Invalid Window Type in config.ini");
+			System.exit(1);
+		}
 		Scene scene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT, Color.BLACK);
 		Canvas canvas = new Canvas(SCREEN_WIDTH, SCREEN_HEIGHT);
 		Label label = new Label();

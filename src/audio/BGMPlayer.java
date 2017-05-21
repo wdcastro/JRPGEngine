@@ -6,6 +6,7 @@ import javafx.scene.media.MediaPlayer;
 public class BGMPlayer extends Thread{
 	
 	static MediaPlayer mediaplayer = null;
+	static double volume = 1.0;
 	
 	public static void setSong(Media media){
 		if(mediaplayer!=null){
@@ -13,6 +14,8 @@ public class BGMPlayer extends Thread{
 		}
 		mediaplayer = new MediaPlayer(media);
 		mediaplayer.setAutoPlay(true);
+		mediaplayer.setVolume(volume);
+		System.out.println("Playing song, volume is "+volume);
 		mediaplayer.setOnEndOfMedia(new Runnable(){
 
 			@Override
@@ -43,6 +46,14 @@ public class BGMPlayer extends Thread{
 			mediaplayer.pause();
 		} else {
 			System.err.println("BGMPlayer: pauseMusic: mediaplayer is null");
+		}
+	}
+	
+	public static void setVolume(double v){
+		volume = v;
+		System.out.println("Set volume to "+volume);
+		if(mediaplayer!=null){
+			mediaplayer.setVolume(volume);
 		}
 	}
 
