@@ -7,10 +7,12 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import core.Game;
+import core.GameStage;
 import audio.SFXPlayer;
 import resources.FileReader;
 import resources.StyleSheetResourceManager;
 import resources.TextResourceManager;
+import screens.InventoryScreen;
 import screens.Screen;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -36,6 +38,9 @@ public class PauseMenu extends VBox{
 		switch(menuname.trim().toUpperCase()){
 		case "PARTY":
 			//do something //creating duplicate screens but its ok
+			break;
+		case "ITEMS":
+			GameStage.setGameStage(new InventoryScreen());
 			break;
 		default:
 			System.out.println(menuname);

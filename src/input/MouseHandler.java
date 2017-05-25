@@ -1,6 +1,7 @@
 package input;
 
 import core.Game;
+import core.GameStage;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
@@ -21,14 +22,8 @@ public class MouseHandler implements EventHandler<MouseEvent> {
 	}
 	
 	public void handleMousePress(MouseEvent e){
-		if(e.getButton().toString() == "PRIMARY"){
-			MOUSE_PRIMARY_DOWN = true;
-			Game.gamestage.currentScreen.handleMousePress(e);
-		} else if (e.getButton().toString() == "SECONDARY"){
-			MOUSE_SECONDARY_DOWN = true;
-		} else if (e.getButton().toString() == "MIDDLE"){
-			MOUSE_MIDDLE_DOWN = true;
-		}
+
+		GameStage.currentScreen.handleMousePress(e);
 		//System.out.println(e.getButton() + " PRESSED");
 	}
 	

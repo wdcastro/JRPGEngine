@@ -72,6 +72,9 @@ public class Game extends Application{
 		Scene scene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT, Color.BLACK);
 		Canvas canvas = new Canvas(SCREEN_WIDTH, SCREEN_HEIGHT);
 		Label label = new Label();
+		label.setTextFill(Color.RED);
+        label.setFont(Font.font("Vernada",20));
+        label.toFront();
 		root.getChildren().add(canvas);
 		root.getChildren().add(label);
 
@@ -102,9 +105,7 @@ public class Game extends Application{
 	                //System.out.println("Current frame rate: "+ frameRate);
 	                label.setText(Double.toString(frameRate));
 	
-	                label.setTextFill(Color.RED);
-	                label.setFont(Font.font("Vernada",20));
-	                label.toFront();
+	                
 	            }
 		    }
 		}.start();

@@ -34,6 +34,7 @@ public class Settings {
 					break;
 				case "BGM":
 					BGMPlayer.setVolume(Double.parseDouble(commands[1].trim()));
+					break;
 				default:
 					System.out.println("Settings: loadSettings: "+commands[0]);
 				}

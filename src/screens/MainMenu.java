@@ -1,4 +1,4 @@
-package menu;
+package screens;
 
 import gamecomponents.GameLogic;
 import graphics.CGImage;
@@ -18,7 +18,6 @@ import javafx.scene.layout.VBox;
 import resources.FileReader;
 import resources.ImageResourceManager;
 import resources.StyleSheetResourceManager;
-import screens.Screen;
 
 public class MainMenu extends Screen {
 	public String background = "background.jpg";

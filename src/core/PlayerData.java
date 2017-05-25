@@ -1,15 +1,16 @@
 package core;
 
+import gameobjects.Consumable;
+
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import resources.FileReader;
-import world.Item;
 
 public class PlayerData {
 //inventory, party, etc
-	public static HashMap<Item, Integer> inventory = new HashMap<Item, Integer>();
+	public static HashMap<String, Consumable> inventory = new HashMap<String, Consumable>();
 	public static HashMap<String, Boolean> flags = new HashMap<String, Boolean>();
 	public static ArrayList<Character> party = new ArrayList<Character>();
 	

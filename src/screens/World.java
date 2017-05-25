@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import audio.PlaylistManager;
 import core.Game;
+import core.GameStage;
 import menu.PauseMenu;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
@@ -75,7 +76,9 @@ public class World extends Screen{
 			npcs.get(i).update();
 		}
 		
-		handleMenuKeys();
+		if(GameStage.currentScreen.getScreenType().equals("WORLD")){
+			handleMenuKeys();
+		}
 	}
 	
 	private void loadWorldData(String path){

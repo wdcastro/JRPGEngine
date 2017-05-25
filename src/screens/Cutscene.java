@@ -24,6 +24,7 @@ public class Cutscene extends Screen{
 	int currentMarker = 0;
 	long startDelay = 3000;
 	long defaultForwardDelay = 1000;
+	String currentAction = "";
 	boolean isPlaying = false;
 	
 	public Cutscene(String path){
@@ -40,6 +41,7 @@ public class Cutscene extends Screen{
 				continue;
 			} else {
 				String[] commands = lines[i].split(";");
+				
 				switch(commands[0].trim()){
 				case "map":
 					world = new World(commands[1].trim(), "");
@@ -129,6 +131,7 @@ public class Cutscene extends Screen{
 	public void processLine(){
 		String line = script.get(currentMarker);
 		String commands[] = line.split(";");
+		currentAction = commands[0].trim();
 		switch(commands[0].trim()){
 		case "action":
 			if(commands[1].trim().equals("player")){
@@ -204,7 +207,7 @@ public class Cutscene extends Screen{
 
 	@Override
 	public void handleMousePress(MouseEvent e) {
-		if(isPlaying && !Game.dialogbox.isTyping()){
+		if(isPlaying && !Game.dialogbox.isTyping() && (currentAction.equals("item") || currentAction.equals("dialog"))){
 			forward();
 		}
 	}

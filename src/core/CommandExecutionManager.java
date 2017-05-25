@@ -26,6 +26,7 @@ public class CommandExecutionManager {
 			if(PlayerData.flags.containsKey(commands[1].trim())){
 				PlayerData.flags.put(commands[1].trim(), true);
 			}
+			break;
 		default:
 			System.out.println("Executing command: "+commands[0].trim());
 			break;

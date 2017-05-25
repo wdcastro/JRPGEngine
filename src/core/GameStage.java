@@ -3,7 +3,7 @@ package core;
 
 
 
-import menu.MainMenu;
+import screens.MainMenu;
 import screens.Screen;
 import gamecomponents.GameLogic;
 import graphics.DrawingThread;
@@ -46,7 +46,7 @@ public class GameStage {
 		
 	}
 	
-	public void backToPrevScreen(){
+	public static void backToPrevScreen(){
 		Screen tempScreen = prevScreen;
 		if(tempScreen != null){
 			setGameStage(tempScreen);
