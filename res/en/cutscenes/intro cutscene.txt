@@ -47,6 +47,8 @@ action; elder1; moveUp; 100
 dialog; elder1; YAHARRO; dragoon chibi.png
 dialog; elder1; I was starting to get lonely without anyone here
 item; potion; 1
+item; glasses; 1
+item; pocky; 5
 flag; intro cutscene; true
 moveCamera; player
 action; player; moveDown; 500

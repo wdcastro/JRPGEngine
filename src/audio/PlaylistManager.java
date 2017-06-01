@@ -19,7 +19,7 @@ public class PlaylistManager {
 	}
 	
 	public static void nextSong(){
-		if(currentSong >= playlist.size()){
+		if(currentSong >= playlist.size()-1){
 			if(isLooping){
 				currentSong = 0;
 			} else {
