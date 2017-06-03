@@ -24,6 +24,6 @@ This is similar to a real life play or theatre where there is one stage but seve
 Images - all drawn by me
 
 Sound files:
--Kwartet Japonski - Maciej Zolnowski
--Field Force - sawsquarenoise
--Game Sound Correct - bertrof
+- Kwartet Japonski - Maciej Zolnowski
+- Field Force - sawsquarenoise
+- Game Sound Correct - bertrof
